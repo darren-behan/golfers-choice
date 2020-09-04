@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-app.use(express.static("public"));
+  app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/golferschoice",
   { 
@@ -24,7 +24,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/golferschoice",
 
 // Routes
 // require("./routes/api-routes.js")(app);
-// require("./routes/html-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 app.listen(PORT, () => {
   console.log(`App running on port http://localhost:${PORT}`);

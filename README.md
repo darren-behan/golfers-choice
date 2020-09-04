@@ -1,6 +1,6 @@
 ![Code Count](https://img.shields.io/github/languages/count/darren-behan/golfers-choice) ![Main Code Base](https://img.shields.io/github/languages/top/darren-behan/golfers-choice) ![License Badge](https://img.shields.io/badge/license-apache-blue) ![Version Badge](https://img.shields.io/badge/version-1.0-red) ![Last Commit](https://img.shields.io/github/last-commit/darren-behan/golfers-choice) ![Open Issues](https://img.shields.io/github/issues-raw/darren-behan/golfers-choice) ![Repo Size](https://img.shields.io/github/repo-size/darren-behan/golfers-choice)
 
-# Welcome to my Golfers Choice 👋
+# Welcome to Golfers Choice 👋
 
 ## Description
 

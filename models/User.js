@@ -7,30 +7,26 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  user: [
-    {
-      first_name: {
-        type: String,
-        trim: true,
-        required: "Enter your first name"
-      },
-      last_name: {
-        type: String,
-        trim: true,
-        required: "Enter your last name"
-      },
-      email: {
-        type: String,
-        trim: true,
-        required: "Enter your email"
-      },
-      password: {
-        type: String,
-        trim: true,
-        required: "Enter your password"
-      }
-    }
-  ]
+  first_name: {
+    type: String,
+    trim: true,
+    required: "Enter your first name"
+  },
+  last_name: {
+    type: String,
+    trim: true,
+    required: "Enter your last name"
+  },
+  email: {
+    type: String,
+    trim: true,
+    required: "Enter your email"
+  },
+  password: {
+    type: String,
+    trim: true,
+    required: "Enter your password"
+  }
 });
 
 const User = mongoose.model("User", UserSchema);

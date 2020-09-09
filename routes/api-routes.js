@@ -1,25 +1,20 @@
 // Dependencies
-// Requiring our Golfclub model
+// Requiring our models
 const db = require("../models");
 // Routes
 module.exports = function (app) {
   // POST route for saving a new golf club
   app.post("/api/golfclub", function (req, res) {
-    console.log(req.body);
     db.Golfclub.create({
       created_by: "Darren Behan",
-      golfclub: [
-        {
-          name: req.body.name,
-          address: req.body.address,
-          num_holes: req.body.holes,
-          par: req.body.par,
-          length: req.body.length,
-          members: req.body.members,
-          green_fees_summer: req.body.sumGreenFee,
-          membership_full_men: req.body.memFee,
-        },
-      ],
+      name: req.body.name,
+      address: req.body.address,
+      num_holes: req.body.num_holes,
+      par: req.body.par,
+      length: req.body.length,
+      members: req.body.members,
+      green_fees_summer: req.body.green_fees_summer,
+      membership_full_men: req.body.membership_full_men
     })
       .then(function (dbGolfClub) {
         console.log(dbGolfClub);

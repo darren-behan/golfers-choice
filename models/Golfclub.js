@@ -18,6 +18,18 @@ const GolfclubSchema = new Schema({
     type: String,
     required: "Enter the golf club address"
   },
+  town: {
+    type: String,
+    required: "Enter the golf club town"
+  },
+  county: {
+    type: String,
+    required: "Enter the golf club town"
+  },
+  postcode: {
+    type: String,
+    required: "Enter the golf club town"
+  },
   num_holes: {
     type: Number,
     required: "Enter the golf course number of holes"

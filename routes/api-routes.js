@@ -72,4 +72,21 @@ module.exports = function (app) {
         console.log(message);
       });
   });
+
+  // POST route for saving a new user
+  app.post("/api/user/signup", async(req, res) => {
+    db.User.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password
+    })
+      .then(function (dbUser) {
+        console.log(dbUser);
+        res.json(dbUser);
+      })
+      .catch(({ message }) => {
+        console.log(message);
+      });
+  });
 };

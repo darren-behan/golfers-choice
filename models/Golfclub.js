@@ -12,12 +12,10 @@ const GolfclubSchema = new Schema({
   },
   name: {
     type: String,
-    trim: true,
     required: "Enter the golf club name"
   },
   address: {
     type: String,
-    trim: true,
     required: "Enter the golf club address"
   },
   num_holes: {

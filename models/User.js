@@ -9,17 +9,15 @@ const UserSchema = new Schema({
   },
   first_name: {
     type: String,
-    trim: true,
     required: "Enter your first name"
   },
   last_name: {
     type: String,
-    trim: true,
     required: "Enter your last name"
   },
   email: {
     type: String,
-    trim: true,
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
     required: "Enter your email"
   },
   password: {

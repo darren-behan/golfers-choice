@@ -53,6 +53,15 @@ const GolfclubSchema = new Schema({
   membership_full_men: {
     type: Number,
     required: "Enter the golf club mens full membership charge"
+  },
+  modified_at: {
+    type: Date,
+    default: Date.now
+  },
+  modified_by: {
+    type: String,
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
+    required: "Enter your email"
   }
 });
 

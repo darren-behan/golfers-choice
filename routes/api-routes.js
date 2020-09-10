@@ -89,4 +89,37 @@ module.exports = function (app) {
         console.log(message);
       });
   });
+
+  // POST route for updating an existing golf club
+  app.post("/update/golfclub/:name", async({ body }, res) => {
+    db.Golfclub.updateOne(
+      {
+        name: body.name
+      },
+      {
+        $set: {
+          name: body.name,
+          address: body.address,
+          town: body.town,
+          county: body.county,
+          postcode: body.postcode,
+          num_holes: body.num_holes,
+          par: body.par,
+          length: body.length,
+          members: body.members,
+          green_fees_summer: body.green_fees_summer,
+          membership_full_men: body.membership_full_men,
+          modified_at: Date.now(),
+          modified_by: body.modified_by
+        }
+      },
+      (error, data) => {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(data);
+        }
+      }
+    );
+  });
 };

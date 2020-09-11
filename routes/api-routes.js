@@ -49,52 +49,52 @@ module.exports = function (app) {
   });
 
   // POST route for saving a new golf club
-  app.post("/api/golfclub", async(req, res) => {
+  app.post("/api/golfclub", async({ body }, res) => {
     db.Golfclub.create({
-      created_by: req.body.created_by,
-      name: req.body.name,
-      address: req.body.address,
-      town: req.body.town,
-      county: req.body.county,
-      postcode: req.body.postcode,
-      num_holes: req.body.num_holes,
-      par: req.body.par,
-      length: req.body.length,
-      members: req.body.members,
-      green_fees_summer: req.body.green_fees_summer,
-      membership_full_men: req.body.membership_full_men
+      created_by: body.created_by,
+      name: body.name,
+      address: body.address,
+      town: body.town,
+      county: body.county,
+      postcode: body.postcode,
+      num_holes: body.num_holes,
+      par: body.par,
+      length: body.length,
+      members: body.members,
+      green_fees_summer: body.green_fees_summer,
+      membership_full_men: body.membership_full_men
     })
-      .then(function (dbGolfClub) {
-        console.log(dbGolfClub);
-        res.json(dbGolfClub);
-      })
-      .catch(({ message }) => {
-        console.log(message);
-      });
+    .then(function (dbGolfClub) {
+      console.log(dbGolfClub);
+      res.json(dbGolfClub);
+    })
+    .catch(({ message }) => {
+      console.log(message);
+    });
   });
 
   // POST route for saving a new user
-  app.post("/api/user/signup", async(req, res) => {
+  app.post("/api/user/signup", async({ body }, res) => {
     db.User.create({
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      email: req.body.email,
-      password: req.body.password
+      first_name: body.first_name,
+      last_name: body.last_name,
+      email: body.email,
+      password: body.password
     })
-      .then(function (dbUser) {
-        console.log(dbUser);
-        res.json(dbUser);
-      })
-      .catch(({ message }) => {
-        console.log(message);
-      });
+    .then(function (dbUser) {
+      console.log(dbUser);
+      res.json(dbUser);
+    })
+    .catch(({ message }) => {
+      console.log(message);
+    });
   });
 
   // POST route for updating an existing golf club
   app.post("/update/golfclub/:name", async({ body }, res) => {
     db.Golfclub.updateOne(
       {
-        name: body.name
+        name: body.name // how do I get this to be the id of the golf club
       },
       {
         $set: {
@@ -110,7 +110,7 @@ module.exports = function (app) {
           green_fees_summer: body.green_fees_summer,
           membership_full_men: body.membership_full_men,
           modified_at: Date.now(),
-          modified_by: body.modified_by
+          modified_by: body.modified_by // how do I get this to be the id of the signed in user
         }
       },
       (error, data) => {
@@ -119,6 +119,44 @@ module.exports = function (app) {
         } else {
           res.send(data);
         }
+      }
+    );
+  });
+
+  // POST route for updating an existing user
+  app.post("/update/user/:email", async({ body }, res) => {
+    db.User.updateOne(
+      {
+        email: body.email // how do I get this to be the id of the signed in user
+      },
+      {
+        $set: {
+          first_name: body.first_name,
+          last_name: body.last_name,
+          email: body.email,
+          password: body.password,
+          modified_at: Date.now(),
+          modified_by: body.email // how do I get this to be the id of the signed in user
+        }
+      },
+      (error, data) => {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(data);
+        }
+      }
+    );
+  });
+
+  // DELETE route for deleting an existing user
+  app.delete("/delete/user/:email", async({ body }, res) => {
+    db.User.deleteOne(
+      {
+        email: body.email // how do I get this to be the id of the signed in user
+      },
+      (error) => {
+        res.send(error);
       }
     );
   });

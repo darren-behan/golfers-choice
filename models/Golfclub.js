@@ -59,9 +59,7 @@ const GolfclubSchema = new Schema({
     default: Date.now
   },
   modified_by: {
-    type: String,
-    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
-    required: "Enter your email"
+    type: String
   }
 });
 

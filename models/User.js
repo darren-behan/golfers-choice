@@ -24,6 +24,13 @@ const UserSchema = new Schema({
     type: String,
     trim: true,
     required: "Enter your password"
+  },
+  modified_at: {
+    type: Date,
+    default: Date.now
+  },
+  modified_by: {
+    type: String
   }
 });
 

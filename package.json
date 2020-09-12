@@ -6,6 +6,8 @@
   "scripts": {
     "test": "npm run lint",
     "start": "node server.js",
+    "lint": "eslint --quiet .",
+    "fix": "eslint --fix .",
     "watch": "nodemon server.js",
     "seed": "node seeders/seed.js"
   },
@@ -28,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/darren-behan/golfers-choice/issues"
   },
-  "homepage": "https://github.com/darren-behan/golfers-choice#readme"
+  "homepage": "https://github.com/darren-behan/golfers-choice#readme",
+  "devDependencies": {
+    "eslint": "^7.8.1"
+  }
 }

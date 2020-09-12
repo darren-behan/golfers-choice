@@ -1,6 +1,7 @@
 // Dependencies
 // Requiring our models
 const db = require("../models");
+const { User } = require("../models");
 // Routes
 module.exports = function (app) {
   // GET route for getting all golf clubs
@@ -150,10 +151,10 @@ module.exports = function (app) {
   });
 
   // DELETE route for deleting an existing user
-  app.delete("/delete/user/:email", async({ body }, res) => {
+  app.delete("/delete/user/:id", (req, res) => {
     db.User.deleteOne(
       {
-        email: body.email // how do I get this to be the id of the signed in user
+        _id: req.params.id
       },
       (error) => {
         res.send(error);

@@ -1,7 +1,7 @@
 // Dependencies
 // Requiring our models
 const db = require("../models");
-const { User } = require("../models");
+const passport = require("../config/passport");
 // Routes
 module.exports = function (app) {
   // GET route for getting all golf clubs
@@ -74,15 +74,18 @@ module.exports = function (app) {
 
   // POST route for saving a new user
   app.post("/api/user/signup", ({ body }, res) => {
+    console.log(body);
     db.User.create({
       first_name: body.first_name,
       last_name: body.last_name,
       email: body.email,
+      username: body.username,
       password: body.password
     })
-    .then(function (dbUser) {
+    .then((dbUser) => {
       console.log(dbUser);
       res.json(dbUser);
+      res.redirect(307, "/api/user/login");
     })
     .catch(({ message }) => {
       console.log(message);
@@ -158,5 +161,35 @@ module.exports = function (app) {
         res.send(error);
       }
     );
+  });
+
+  // POST request for logging in a user.
+  // Using the passport.authenticate middleware with our local strategy.
+  app.post("/api/user/login", passport.authenticate("local"), (req, res) => {
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
+  });
+
+  // GET route for logging user out
+  app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
+
+  // GET route for getting some data about our user to be used client side
+  app.get("/api/user_data", (req, res) => {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      res.json({
+        email: req.user.email,
+        id: req.user.id
+      });
+    }
   });
 };

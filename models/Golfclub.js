@@ -24,11 +24,11 @@ const GolfclubSchema = new Schema({
   },
   county: {
     type: String,
-    required: "Enter the golf club town"
+    required: "Enter the golf club county"
   },
   postcode: {
     type: String,
-    required: "Enter the golf club town"
+    required: "Enter the golf club postcode"
   },
   num_holes: {
     type: Number,

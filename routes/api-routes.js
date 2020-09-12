@@ -5,7 +5,7 @@ const { User } = require("../models");
 // Routes
 module.exports = function (app) {
   // GET route for getting all golf clubs
-  app.get("/api/golfclub", async({ body }, res) => {
+  app.get("/api/golfclub", ({ body }, res) => {
     // Find all golf clubs
     db.Golfclub.find({})
     .then(dbGolfClub => {
@@ -18,10 +18,10 @@ module.exports = function (app) {
   });
 
   // GET route for getting golf club data when USER searches for specific golf club
-  app.get("/api/golfclub/:name", async({ body }, res) => {
+  app.get("/api/golfclub/:name", (req, res) => {
     // Find the relevant Golf Club by it's name
     db.Golfclub.findOne({
-      name: body.name
+      name: req.params.name
     })
     .then(dbGolfClub => {
       console.log(dbGolfClub);
@@ -33,12 +33,10 @@ module.exports = function (app) {
   });
 
   // GET route for getting all golf clubs by location
-  app.get("/api/golfclub/:county", async({ body }, res) => {
-    console.log("line 36");
-    console.log(body);
+  app.get("/api/golfclub/:county", (req, res) => {
     // Find all golf clubs by location
-    db.Golfclub.find({
-      county: body.county
+    db.Golfclub.findOne({
+      county: req.params.county
     })
     .then(dbGolfClub => {
       console.log(dbGolfClub);
@@ -50,20 +48,20 @@ module.exports = function (app) {
   });
 
   // POST route for saving a new golf club
-  app.post("/api/golfclub", async({ body }, res) => {
+  app.post("/api/golfclub/register", (req, res) => {
     db.Golfclub.create({
-      created_by: body.created_by,
-      name: body.name,
-      address: body.address,
-      town: body.town,
-      county: body.county,
-      postcode: body.postcode,
-      num_holes: body.num_holes,
-      par: body.par,
-      length: body.length,
-      members: body.members,
-      green_fees_summer: body.green_fees_summer,
-      membership_full_men: body.membership_full_men
+      created_by: req.params.id,
+      name: req.body.name,
+      address: req.body.address,
+      town: req.body.town,
+      county: req.body.county,
+      postcode: req.body.postcode,
+      num_holes: req.body.num_holes,
+      par: req.body.par,
+      length: req.body.length,
+      members: req.body.members,
+      green_fees_summer: req.body.green_fees_summer,
+      membership_full_men: req.body.membership_full_men
     })
     .then(function (dbGolfClub) {
       console.log(dbGolfClub);
@@ -75,7 +73,7 @@ module.exports = function (app) {
   });
 
   // POST route for saving a new user
-  app.post("/api/user/signup", async({ body }, res) => {
+  app.post("/api/user/signup", ({ body }, res) => {
     db.User.create({
       first_name: body.first_name,
       last_name: body.last_name,
@@ -92,26 +90,26 @@ module.exports = function (app) {
   });
 
   // POST route for updating an existing golf club
-  app.post("/update/golfclub/:name", async({ body }, res) => {
+  app.post("/update/golfclub/:id", (req, res) => {
     db.Golfclub.updateOne(
       {
-        name: body.name // how do I get this to be the id of the golf club
+        _id: req.params.id
       },
       {
         $set: {
-          name: body.name,
-          address: body.address,
-          town: body.town,
-          county: body.county,
-          postcode: body.postcode,
-          num_holes: body.num_holes,
-          par: body.par,
-          length: body.length,
-          members: body.members,
-          green_fees_summer: body.green_fees_summer,
-          membership_full_men: body.membership_full_men,
+          name: req.body.name,
+          address: req.body.address,
+          town: req.body.town,
+          county: req.body.county,
+          postcode: req.body.postcode,
+          num_holes: req.body.num_holes,
+          par: req.body.par,
+          length: req.body.length,
+          members: req.body.members,
+          green_fees_summer: req.body.green_fees_summer,
+          membership_full_men: req.body.membership_full_men,
           modified_at: Date.now(),
-          modified_by: body.modified_by // how do I get this to be the id of the signed in user
+          modified_by: req.params.id
         }
       },
       (error, data) => {
@@ -125,19 +123,19 @@ module.exports = function (app) {
   });
 
   // POST route for updating an existing user
-  app.post("/update/user/:email", async({ body }, res) => {
+  app.post("/update/user/:id", (req, res) => {
     db.User.updateOne(
       {
-        email: body.email // how do I get this to be the id of the signed in user
+        _id: req.params.id
       },
       {
         $set: {
-          first_name: body.first_name,
-          last_name: body.last_name,
-          email: body.email,
-          password: body.password,
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          email: req.body.email,
+          password: req.body.password,
           modified_at: Date.now(),
-          modified_by: body.email // how do I get this to be the id of the signed in user
+          modified_by: req.params.id
         }
       },
       (error, data) => {

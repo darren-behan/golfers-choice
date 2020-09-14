@@ -52,7 +52,8 @@ UserSchema.methods.validPassword = function(password) {
 };
 
 // Before a User is created, we will automatically hash their password
-UserSchema.pre("save", (next) => {
+UserSchema.pre("save", function(next) {
+  console.log(this);
   this.password = bcrypt.hashSync(
     this.password,
     bcrypt.genSaltSync(10),

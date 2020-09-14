@@ -85,7 +85,6 @@ module.exports = function (app) {
     .then((dbUser) => {
       console.log(dbUser);
       res.json(dbUser);
-      res.redirect(307, "/api/user/login");
     })
     .catch(({ message }) => {
       console.log(message);

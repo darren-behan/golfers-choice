@@ -4,7 +4,7 @@
   "description": "Golfers Choice is built on an node.js and express.js stack with react.js as the UI and MongoDB & Mongoose as the database",
   "main": "server.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node seeders/seed.js"

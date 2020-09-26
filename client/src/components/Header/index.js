@@ -15,12 +15,12 @@ function Header() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
           <Nav.Item>
-            <Nav.Link className="nav-link" href="login" id="login" style={{color: '#697684', fontWeight: 400}}>
+            <Nav.Link className="nav-link" href="login" style={{color: '#697684', fontWeight: 400}}>
               <Button variant="outline-dark">Login</Button>
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className="nav-link" href="sign-up" id="sign-up" style={{ color: '#697684', fontWeight: 400 }}>
+            <Nav.Link className="nav-link" href="signup" style={{ color: '#697684', fontWeight: 400 }}>
               <Button variant="outline-dark">Join</Button>
             </Nav.Link>
           </Nav.Item>

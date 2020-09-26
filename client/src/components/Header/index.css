@@ -1,6 +1,6 @@
 /* Navigation Menu */
 #navbar {
-  border-bottom: 3px solid #046307;
+  box-shadow: 0px 5px 5px #046307;
   background-color: #fbfbfb;
 }
 

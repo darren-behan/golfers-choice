@@ -1,20 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Wrapper from './components/Wrapper';
-import Header from './components/Header';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Header from "./components/Header";
+import Wrapper from "./components/Wrapper";
 
 function App() {
   return (
-    <Wrapper>
-      <Header />
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-        </header>
-      </div>
-    </Wrapper>
+    <Router>
+      <Wrapper>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/login" component={Login} />
+        </Switch>
+      </Wrapper>
+    </Router>
   );
 }
 

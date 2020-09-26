@@ -1,0 +1,17 @@
+/* Navigation Menu */
+#navbar {
+  border-bottom: 3px solid #046307;
+  background-color: #fbfbfb;
+}
+
+.toggle-icon {
+  background-color: #046307;
+}
+
+.nav-link:hover {
+  color: #046307!important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color:#046307
+}

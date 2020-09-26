@@ -1,11 +1,10 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
 
 function Wrapper(props) {
   return (
-    <Container maxWidth={ false } disableGutters={ true }>
+    <div className=".container-fluid">
       { props.children }
-    </Container>
+    </div>
   );
 }
 

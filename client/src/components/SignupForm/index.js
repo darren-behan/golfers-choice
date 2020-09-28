@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import './index.css';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -7,11 +8,30 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Logo from "../../assets/img/golf-logo-header.jpg";
+import API from "../../utils/API";
 
 function SignUpForm() {
+  let history = useHistory();
+
   const [validated, setValidated] = useState(false);
+  const [newUserObject, setNewUserObject] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState( false );
+
+  useEffect(() => {
+    if(isAuthenticated) {
+      history.push("/home");
+    }
+  }, [isAuthenticated])
+
+  // Handles updating component state when the user types into the input field
+  function handleInputChange(event) {
+    console.log(event.target.value);
+    const { name, value } = event.target;
+    setNewUserObject({...newUserObject, [name]: value})
+  };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -19,8 +39,19 @@ function SignUpForm() {
     }
 
     setValidated(true);
+
+    API.saveUser({
+      first_name: newUserObject.first_name,
+      last_name: newUserObject.last_name,
+      email: newUserObject.email,
+      username: newUserObject.username,
+      password: newUserObject.password
+    })
+      .then(res => setIsAuthenticated(true))
+      .catch(err => console.log(err));
   };
 
+  console.log(newUserObject);
   return (
     <Container fluid="sm" className="p-5">
       <Row className="p-2">
@@ -38,7 +69,9 @@ function SignUpForm() {
               <Form.Group as={Row} controlId="validationCustom01">
                 <Col sm={12}>
                   <Form.Control
+                    onChange={handleInputChange}
                     required
+                    name="first_name"
                     type="text"
                     placeholder="First name"
                   />
@@ -48,7 +81,9 @@ function SignUpForm() {
               <Form.Group as={Row} controlId="validationCustom02">
                 <Col sm={12}>
                   <Form.Control
+                    onChange={handleInputChange}
                     required
+                    name="last_name"
                     type="text"
                     placeholder="Last name"
                   />
@@ -58,7 +93,7 @@ function SignUpForm() {
 
               <Form.Group as={Row} controlId="formHorizontalEmail">
                 <Col sm={12}>
-                  <Form.Control type="email" placeholder="Email" />
+                  <Form.Control onChange={handleInputChange} name="email" type="email" placeholder="Email" />
                 </Col>
               </Form.Group>
 
@@ -66,6 +101,8 @@ function SignUpForm() {
                 <InputGroup>
                   <Col sm={12}>
                     <Form.Control
+                      onChange={handleInputChange}
+                      name="username"
                       type="text"
                       placeholder="Username"
                       aria-describedby="inputGroupPrepend"
@@ -80,7 +117,7 @@ function SignUpForm() {
 
               <Form.Group as={Row} controlId="formHorizontalPassword">
                 <Col sm={12}>
-                  <Form.Control type="password" placeholder="Password" />
+                  <Form.Control onChange={handleInputChange} name="password" type="password" placeholder="Password" />
                 </Col>
               </Form.Group>
 

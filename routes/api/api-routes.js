@@ -1,7 +1,7 @@
 // Dependencies
 // Requiring our models
-const db = require("../models");
-const passport = require("../config/passport");
+const db = require("../../models");
+const passport = require("../../config/passport");
 // Routes
 module.exports = function (app) {
   // GET route for getting all golf clubs

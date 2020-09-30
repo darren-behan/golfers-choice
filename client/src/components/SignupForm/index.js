@@ -40,7 +40,7 @@ function SignUpForm() {
 
     setValidated(true);
 
-    API.saveUser({
+    API.createUser({
       first_name: newUserObject.first_name,
       last_name: newUserObject.last_name,
       email: newUserObject.email,

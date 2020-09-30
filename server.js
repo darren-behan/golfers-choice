@@ -1,6 +1,7 @@
 // Dependencies
 const express = require("express");
 const mongoose = require("mongoose");
+const routes = require("./routes");
 const session = require("express-session");
 const passport = require("./config/passport");
 
@@ -33,9 +34,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/golferschoice",
   }
 );
 
-// Routes
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+// Add routes, both API and view
+app.use(routes);
 
 app.listen(PORT, () => {
   console.log(`App running on port http://localhost:${PORT}`);

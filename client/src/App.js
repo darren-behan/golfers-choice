@@ -1,5 +1,6 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import DataAreaContext from "../src/utils/DataAreaContext";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home";
@@ -9,8 +10,22 @@ import Header from "./components/Header";
 import Wrapper from "./components/Wrapper";
 
 function App() {
+  const history = useHistory();
+
+  const [validated, setValidated] = useState(false);
+  const [newUserObject, setNewUserObject] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState( false );
+
+  useEffect(() => {
+    if(isAuthenticated) {
+      history.push("/home");
+    }
+  }, [isAuthenticated])
+  
   return (
-    <Router>
+    <DataAreaContext.Provider
+    value={{ newUserObject, validated, setValidated, setNewUserObject, setIsAuthenticated }}
+    >
       <Wrapper>
         <Header />
         <Switch>
@@ -19,7 +34,7 @@ function App() {
           <Route exact path="/signup" component={Signup} />
         </Switch>
       </Wrapper>
-    </Router>
+    </DataAreaContext.Provider>
   );
 }
 

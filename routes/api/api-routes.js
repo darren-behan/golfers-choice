@@ -72,25 +72,6 @@ module.exports = function (app) {
     });
   });
 
-  // POST route for saving a new user
-  app.post("/api/user/signup", ({ body }, res) => {
-    console.log(body);
-    db.User.create({
-      first_name: body.first_name,
-      last_name: body.last_name,
-      email: body.email,
-      username: body.username,
-      password: body.password
-    })
-    .then((dbUser) => {
-      console.log(dbUser);
-      res.json(dbUser);
-    })
-    .catch(({ message }) => {
-      console.log(message);
-    });
-  });
-
   // POST route for updating an existing golf club
   app.post("/update/golfclub/:id", (req, res) => {
     db.Golfclub.updateOne(
@@ -120,44 +101,6 @@ module.exports = function (app) {
         } else {
           res.send(data);
         }
-      }
-    );
-  });
-
-  // POST route for updating an existing user
-  app.post("/update/user/:id", (req, res) => {
-    db.User.updateOne(
-      {
-        _id: req.params.id
-      },
-      {
-        $set: {
-          first_name: req.body.first_name,
-          last_name: req.body.last_name,
-          email: req.body.email,
-          password: req.body.password,
-          modified_at: Date.now(),
-          modified_by: req.params.id
-        }
-      },
-      (error, data) => {
-        if (error) {
-          res.send(error);
-        } else {
-          res.send(data);
-        }
-      }
-    );
-  });
-
-  // DELETE route for deleting an existing user
-  app.delete("/delete/user/:id", (req, res) => {
-    db.User.deleteOne(
-      {
-        _id: req.params.id
-      },
-      (error) => {
-        res.send(error);
       }
     );
   });

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useContext } from 'react';
 import './index.css';
+import API from "../../utils/API";
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,29 +8,18 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Logo from "../../assets/img/golf-logo-header.jpg";
-import API from "../../utils/API";
+import DataAreaContext from "../../utils/DataAreaContext";
 
 function SignUpForm() {
-  let history = useHistory();
-
-  const [validated, setValidated] = useState(false);
-  const [newUserObject, setNewUserObject] = useState({});
-  const [isAuthenticated, setIsAuthenticated] = useState( false );
-
-  useEffect(() => {
-    if(isAuthenticated) {
-      history.push("/home");
-    }
-  }, [isAuthenticated])
+  const { newUserObject, validated, setNewUserObject, setValidated, setIsAuthenticated } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
-    console.log(event.target.value);
     const { name, value } = event.target;
     setNewUserObject({...newUserObject, [name]: value})
   };
 
-  const handleSubmit = (event) => {
+  const handleSignupFormSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -47,11 +36,17 @@ function SignUpForm() {
       username: newUserObject.username,
       password: newUserObject.password
     })
-      .then(res => setIsAuthenticated(true))
+      .then(() => setNewUserObject({ ...newUserObject,
+        first_name: "",
+        last_name: "",
+        email: "",
+        username: "",
+        password: ""
+      }))
+      .then(() => setIsAuthenticated(true))
       .catch(err => console.log(err));
   };
 
-  console.log(newUserObject);
   return (
     <Container fluid="sm" className="p-5">
       <Row className="p-2">
@@ -65,13 +60,14 @@ function SignUpForm() {
             <h2 style={{color: '#697684', fontWeight: 400}}>Create account</h2>
           </Col>
           <Col sm={12}>
-            <Form pt={20} noValidate validated={validated} onSubmit={handleSubmit}>
+            <Form pt={20} noValidate validated={validated} onSubmit={handleSignupFormSubmit}>
               <Form.Group as={Row} controlId="validationCustom01">
                 <Col sm={12}>
                   <Form.Control
                     onChange={handleInputChange}
                     required
                     name="first_name"
+                    value={ newUserObject.first_name }
                     type="text"
                     placeholder="First name"
                   />

@@ -36,11 +36,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   // Using the passport.authenticate middleware with our local strategy.
-  login: (passport.authenticate("local"), (req, res) => {
-      res.json({
-        email: req.body.email,
-        firstName: req.body.first_name,
-        id: req.body.id
+  login: (req, res) => {
+    console.log(req.body);
+    res.json({
+      email: req.body.email,
+      firstName: req.body.first_name,
+      id: req.body.id
     });
-  })
+  }
 };

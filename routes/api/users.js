@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
+const passport = require("../../config/passport");
 
 // Express then matches the final portion of the route to one of the below
 
@@ -19,6 +20,11 @@ router.route("/:id")
 // Matches with "/api/users/login"
 router.route("/login")
   // POST request for logging in a user.
-  .post(usersController.login)
+  .post(passport.authenticate("local"), (req, res) => {
+    res.json({
+      email: req.user.email,
+      id: req.user.id
+    });
+  });
 
 module.exports = router;

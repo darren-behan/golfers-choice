@@ -80,6 +80,7 @@ function SignUpForm() {
                     onChange={handleInputChange}
                     required
                     name="last_name"
+                    value={ newUserObject.last_name }
                     type="text"
                     placeholder="Last name"
                   />
@@ -89,7 +90,12 @@ function SignUpForm() {
 
               <Form.Group as={Row} controlId="formHorizontalEmail">
                 <Col sm={12}>
-                  <Form.Control onChange={handleInputChange} name="email" type="email" placeholder="Email" />
+                  <Form.Control 
+                    onChange={handleInputChange} 
+                    name="email"
+                    value={ newUserObject.email } 
+                    type="email" 
+                    placeholder="Email" />
                 </Col>
               </Form.Group>
 
@@ -99,6 +105,7 @@ function SignUpForm() {
                     <Form.Control
                       onChange={handleInputChange}
                       name="username"
+                      value={ newUserObject.username }
                       type="text"
                       placeholder="Username"
                       aria-describedby="inputGroupPrepend"
@@ -113,7 +120,12 @@ function SignUpForm() {
 
               <Form.Group as={Row} controlId="formHorizontalPassword">
                 <Col sm={12}>
-                  <Form.Control onChange={handleInputChange} name="password" type="password" placeholder="Password" />
+                  <Form.Control 
+                    onChange={handleInputChange} 
+                    name="password" 
+                    value={ newUserObject.password }
+                    type="password" 
+                    placeholder="Password" />
                 </Col>
               </Form.Group>
 

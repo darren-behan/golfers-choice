@@ -1,10 +1,13 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 
+// Express then matches the final portion of the route to one of the below
+
 // Matches with "/api/users"
 router.route("/")
   // POST route for creating a new user
   .post(usersController.create);
+  // .post(usersController.login);
 
 // Matches with "/api/users/:id"
 router.route("/:id")

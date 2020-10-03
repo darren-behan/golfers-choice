@@ -37,10 +37,10 @@ module.exports = {
   },
   // Using the passport.authenticate middleware with our local strategy.
   login: (passport.authenticate("local"), (req, res) => {
-    res.json({
-      email: req.user.email,
-      firstName: req.user.first_name,
-      id: req.user.id
+      res.json({
+        email: req.body.email,
+        firstName: req.body.first_name,
+        id: req.body.id
     });
   })
 };

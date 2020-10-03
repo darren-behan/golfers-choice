@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/golferschoice",
   }
 );
 
-// Add routes, both API and view
+// Express navigates to the routes folder and uses the index file
 app.use(routes);
 
 app.listen(PORT, () => {

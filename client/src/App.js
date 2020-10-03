@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import DataAreaContext from "../src/utils/DataAreaContext";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +14,7 @@ function App() {
 
   const [validated, setValidated] = useState(false);
   const [newUserObject, setNewUserObject] = useState({});
+  const [loggedInUserObject, setLoggedInUserObject] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState( false );
 
   useEffect(() => {
@@ -21,10 +22,10 @@ function App() {
       history.push("/home");
     }
   }, [isAuthenticated])
-  
+
   return (
     <DataAreaContext.Provider
-    value={{ newUserObject, validated, setValidated, setNewUserObject, setIsAuthenticated }}
+    value={{ loggedInUserObject, newUserObject, validated, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated }}
     >
       <Wrapper>
         <Header />

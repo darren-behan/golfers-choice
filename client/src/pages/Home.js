@@ -3,7 +3,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import HeroImage from '../assets/img/home-hero.jpg';
 import HomeSearchForm from "../components/HomeSearchForm";
-import Grid from "../components/Grid";
 
 function Login() {
   const RowStyles ={
@@ -15,14 +14,13 @@ function Login() {
   };
 
   return (
-    <Row style={ RowStyles }>
-      <Col className="md-12">
-        <HomeSearchForm />
-        <Grid>
-          
-        </Grid>
-      </Col>
-    </Row>
+    <>
+      <Row className="hero-home-row" style={ RowStyles }>
+        <Col className="hero-home-col" md={12}>
+          <HomeSearchForm />
+        </Col>
+      </Row>
+    </>
   )
 }
 

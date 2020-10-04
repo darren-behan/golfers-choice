@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Header from "./components/Header";
+import GolfClub from "./pages/GolfClub";
 import Wrapper from "./components/Wrapper";
 
 function App() {
@@ -28,9 +28,9 @@ function App() {
     value={{ loggedInUserObject, newUserObject, validated, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated }}
     >
       <Wrapper>
-        <Header />
         <Switch>
           <Route exact path={["/", "/home"]} component={Home} />
+          <Route exact path="/golfclub" component={GolfClub} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
         </Switch>

@@ -16,6 +16,7 @@ function App() {
   const [newUserObject, setNewUserObject] = useState({});
   const [loggedInUserObject, setLoggedInUserObject] = useState({});
   const [isAuthenticated, setIsAuthenticated] = useState( false );
+  const [golfClub, setGolfClub] = useState("");
 
   useEffect(() => {
     if(isAuthenticated) {
@@ -23,9 +24,10 @@ function App() {
     }
   }, [isAuthenticated])
 
+  console.log(golfClub);
   return (
     <DataAreaContext.Provider
-    value={{ loggedInUserObject, newUserObject, validated, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated }}
+    value={{ loggedInUserObject, newUserObject, validated, golfClub, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub }}
     >
       <Wrapper>
         <Switch>

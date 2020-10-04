@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./index.css";
 import Logo from "../../assets/img/golf-logo-header-transparent.png";
 import Container from 'react-bootstrap/Container';
@@ -9,8 +9,17 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import DataAreaContext from "../../utils/DataAreaContext";
 
 function HomeSearchForm() {
+  const { golfClub, setGolfClub } = useContext(DataAreaContext);
+
+  // Handles updating component state when the user types into the input field
+  function handleInputChange(event) {
+    const { value } = event.target;
+    setGolfClub({...golfClub, value})
+  };
+
   return (
     <div className="hero-content">
       <Container className="search-form-container">
@@ -31,6 +40,7 @@ function HomeSearchForm() {
                 </div>
               </InputGroup.Append>
               <FormControl
+                onChange={ handleInputChange }
                 placeholder="Search by course or county"
                 aria-label="Search by course or county"
                 aria-describedby="basic-addon2"
@@ -41,7 +51,7 @@ function HomeSearchForm() {
               </InputGroup.Append>
             </InputGroup>
             <div>
-              <h8>Featured image: Newbridge Golf Club</h8>
+              <p>Featured image: Newbridge Golf Club</p>
             </div>
           </Col>
         </Row>

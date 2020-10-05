@@ -6,7 +6,7 @@ import DataAreaContext from "../../utils/DataAreaContext";
 import GolfClubModal from "../GolfClubModal";
 
 function GolfClub() {
-  const { golfClubs, setGolfClubModal } = useContext(DataAreaContext);
+  const { searchResults, golfClubs, setGolfClubModal } = useContext(DataAreaContext);
   const [modalShow, setModalShow] = useState(false);
 
   const viewGolfClubClick = (golfClubObject) => {
@@ -16,9 +16,9 @@ function GolfClub() {
 
   return (
     <>
-      {golfClubs.length ? (
+      {searchResults.length ? (
         <ul>
-          {golfClubs.map(golfClub => (
+          {searchResults.map(golfClub => (
             <li key={ golfClub._id } className="golf-club-li">
               <Card>
                 <Card.Body>

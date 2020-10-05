@@ -11,7 +11,7 @@ function GolfClubModal(props) {
   const { golfClubModal } = useContext(DataAreaContext);
 
   return (
-    <Modal {...props} aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           { golfClubModal.name }
@@ -20,13 +20,25 @@ function GolfClubModal(props) {
       <Modal.Body className="show-grid">
         <Container>
           <Row>
-            <Col xs={12} md={6}>
-              <img src="https://via.placeholder.com/200x200"></img>
+            <Col xs={12} style={{ borderBottom: "1px solid #dee2e6"}}>
+              <div style={{ textAlign: "center", paddingBottom: "15px" }}>
+                <img src="https://via.placeholder.com/400x400" />
+              </div>
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={12}>
+              <strong>Description: </strong>{ golfClubModal.description }
+              <br/>
               <strong>No. of holes: </strong>{ golfClubModal.num_holes }
               <br/>
               <strong>Par: </strong>{ golfClubModal.par }
+              <br/>
+              <strong>Length: </strong>{ golfClubModal.length } yards
+              <br/>
+              <strong>Members: </strong>{ golfClubModal.members }
+              <br/>
+              <strong>Full Membership Cost: </strong>€{ golfClubModal.membership_full_men }
+              <br/>
+              <strong>Summer Green Fee: </strong>€{ golfClubModal.green_fees_summer }
             </Col>
           </Row>
         </Container>

@@ -24,16 +24,14 @@ function GolfClub() {
                 <Card.Body>
                   <Card.Title> { golfClub.name.toUpperCase() } </Card.Title>
                   <Card.Text>
-                    <strong>No. of holes: </strong>{ golfClub.num_holes }
-                    <br/>
-                    <strong>Par: </strong>{ golfClub.par }
+                    { golfClub.description }
                   </Card.Text>
                   <Button variant="outline-dark" onClick={() => viewGolfClubClick(golfClub) }>View more</Button>
-                  <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
                 </Card.Body>
               </Card>
             </li>
           ))}
+          <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
         </ul>
       ) : (
         <h3>No Results to Display</h3>

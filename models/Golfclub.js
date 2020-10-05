@@ -14,6 +14,10 @@ const GolfclubSchema = new Schema({
     type: String,
     required: "Enter the golf club name"
   },
+  description: {
+    type: String,
+    required: "Enter a description for the golf club"
+  },
   address: {
     type: String,
     required: "Enter the golf club address"

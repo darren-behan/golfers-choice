@@ -25,8 +25,10 @@ function App() {
   const [golfClub, setGolfClub] = useState({});
   // This is used to store the response from the user search for golf clubs in a certain county
   const [searchResults, setSearchResults] = useState([]);
-  // This is used to store the response from the user search for golf clubs in a certain county
+  // This is used to store all golf clubs returned on app load
   const [golfClubs, setGolfClubs] = useState([]);
+  // This is used to store the golf club details when you want to view that specific golf club
+  const [golfClubModal, setGolfClubModal] = useState({});
 
   // useEffect is listening on load of site
   // If isAuthenticated changes to true, the user is navigated to the home page 
@@ -48,7 +50,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ loggedInUserObject, newUserObject, validated, golfClub, searchResults, golfClubs, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs }}
+    value={{ loggedInUserObject, newUserObject, validated, golfClub, searchResults, golfClubs, golfClubModal, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal }}
     >
       <Wrapper>
         <Switch>

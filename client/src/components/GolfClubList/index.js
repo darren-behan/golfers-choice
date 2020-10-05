@@ -1,11 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './index.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import DataAreaContext from "../../utils/DataAreaContext";
+import GolfClubModal from "../GolfClubModal";
 
 function GolfClub() {
-  const { golfClubs } = useContext(DataAreaContext);
+  const { golfClubs, setGolfClubModal } = useContext(DataAreaContext);
+  const [modalShow, setModalShow] = useState(false);
+
+  const viewGolfClubClick = (golfClubObject) => {
+    setGolfClubModal(golfClubObject);
+    setModalShow(true);
+  }
 
   return (
     <>
@@ -21,7 +28,8 @@ function GolfClub() {
                     <br/>
                     <strong>Par: </strong>{ golfClub.par }
                   </Card.Text>
-                  <Button variant="outline-dark">View more</Button>
+                  <Button variant="outline-dark" onClick={() => viewGolfClubClick(golfClub) }>View more</Button>
+                  <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
                 </Card.Body>
               </Card>
             </li>

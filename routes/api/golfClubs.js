@@ -5,7 +5,12 @@ const golfClubsController = require("../../controllers/golfClubsController");
 
 // Matches with "/api/golfclub"
 router.route("/")
-  // GET request for logging in a user.
+  // GET request for returning all golf clubs based on the county the user has searched for
   .get(golfClubsController.findByCounty)
+
+// Matches with "/api/golfclub/all"
+router.route("/all")
+  // GET request to return all golf clubs
+  .get(golfClubsController.findAll)
 
 module.exports = router;

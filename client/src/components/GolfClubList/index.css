@@ -1,4 +1,12 @@
-li {
-  background-color: beige;
+.golf-club-li {
   list-style-type: none;
+  padding-bottom: 15px;
+}
+
+.card {
+  background-color: #fbfbfb;
+}
+
+.card-title.capitalize {
+  text-transform: capitalize;
 }

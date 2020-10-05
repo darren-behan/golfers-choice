@@ -6,6 +6,7 @@ import GolfClub from '../GolfClubList';
 import WeatherWidget from '../WidgetWeather';
 
 function Grid() {
+  
   return (
     <Container>
       <Row style={{ padding: "15px 10px" }}>

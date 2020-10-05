@@ -14,5 +14,8 @@ export default {
     return axios.get("/api/golfclub", {
       params: userData
     });
+  },
+  getGolfClubs: function() {
+    return axios.get("/api/golfclub/all");
   }
 };

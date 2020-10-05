@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './index.css';
-import Image from 'react-bootstrap/Image';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import DataAreaContext from "../../utils/DataAreaContext";
 
 function GolfClub() {
+  const { golfClubs } = useContext(DataAreaContext);
+
   return (
-    <ul>
-      <li>
-        <Card>
-          <Card.Body>
-            <Card.Title>Newbridge Golf Club</Card.Title>
-            <Card.Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate velit non tortor porttitor viverra. Suspendisse porttitor odio id vulputate convallis. Suspendisse malesuada aliquam ipsum vitae porttitor. Maecenas pharetra erat justo, sed aliquam magna imperdiet at.
-            </Card.Text>
-            <Button variant="outline-dark">View more</Button>
-          </Card.Body>
-        </Card>
-      </li>
-    </ul>
+    <>
+      {golfClubs.length ? (
+        <ul>
+          {golfClubs.map(golfClub => (
+            <li key={ golfClub._id } className="golf-club-li">
+              <Card>
+                <Card.Body>
+                  <Card.Title> { golfClub.name.toUpperCase() } </Card.Title>
+                  <Card.Text>
+                    <strong>No. of holes: </strong>{ golfClub.num_holes }
+                    <br/>
+                    <strong>Par: </strong>{ golfClub.par }
+                  </Card.Text>
+                  <Button variant="outline-dark">View more</Button>
+                </Card.Body>
+              </Card>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <h3>No Results to Display</h3>
+      )}
+    </>
   )
 }
 

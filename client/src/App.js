@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, useHistory } from "react-router-dom";
 import DataAreaContext from "../src/utils/DataAreaContext";
+import API from "./utils/API";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home";
@@ -24,17 +25,30 @@ function App() {
   const [golfClub, setGolfClub] = useState({});
   // This is used to store the response from the user search for golf clubs in a certain county
   const [searchResults, setSearchResults] = useState([]);
+  // This is used to store the response from the user search for golf clubs in a certain county
+  const [golfClubs, setGolfClubs] = useState([]);
 
+  // useEffect is listening on load of site
+  // If isAuthenticated changes to true, the user is navigated to the home page 
   useEffect(() => {
     if(isAuthenticated) {
       history.push("/home");
-    }
-  }, [isAuthenticated])
+    };
+    loadGolfClubs();
+  }, [isAuthenticated]);
 
-  console.log(golfClub);
+  // Loads all golf clubs and sets them to searchResults
+  function loadGolfClubs() {
+    API.getGolfClubs()
+      .then(res => 
+        setGolfClubs(res.data)
+      )
+      .catch(err => console.log(err));
+  };
+
   return (
     <DataAreaContext.Provider
-    value={{ loggedInUserObject, newUserObject, validated, golfClub, searchResults, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults }}
+    value={{ loggedInUserObject, newUserObject, validated, golfClub, searchResults, golfClubs, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs }}
     >
       <Wrapper>
         <Switch>

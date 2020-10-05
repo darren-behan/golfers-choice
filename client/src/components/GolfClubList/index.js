@@ -17,7 +17,7 @@ function GolfClub() {
   return (
     <>
       {searchResults.length ? (
-        <ul>
+        <ul className="golf-club-ul">
           {searchResults.map(golfClub => (
             <li key={ golfClub._id } className="golf-club-li">
               <Card>

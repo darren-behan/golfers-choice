@@ -20,10 +20,10 @@ function GolfClubModal(props) {
       <Modal.Body className="show-grid">
         <Container>
           <Row>
-            <Col xs={12} md={8}>
-              { golfClubModal.name }
+            <Col xs={12} md={6}>
+              <img src="https://via.placeholder.com/200x200"></img>
             </Col>
-            <Col xs={6} md={4}>
+            <Col xs={12} md={6}>
               <strong>No. of holes: </strong>{ golfClubModal.num_holes }
               <br/>
               <strong>Par: </strong>{ golfClubModal.par }

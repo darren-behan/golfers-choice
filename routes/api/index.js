@@ -5,6 +5,6 @@ const golfClubRoutes = require("./golfClubs");
 // If the second portion of the route contains /users, Express navigates to the users.js file within this directory
 router.use("/users", userRoutes);
 // Golf Club routes
-// router.use("/golfclub", golfClubRoutes);
+router.use("/golfclub", golfClubRoutes);
 
 module.exports = router;

@@ -1,7 +1,6 @@
 // Dependencies
 // Requiring our models
 const db = require("../models");
-const passport = require("../config/passport");
 
 const getUserDtoFromModel = (model) => {
   return {

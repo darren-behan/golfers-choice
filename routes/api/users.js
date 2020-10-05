@@ -8,7 +8,6 @@ const passport = require("../../config/passport");
 router.route("/")
   // POST route for creating a new user
   .post(usersController.create);
-  // .post(usersController.login);
 
 // Matches with "/api/users/:id"
 router.route("/:id")

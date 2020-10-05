@@ -24,7 +24,9 @@ function GolfClub() {
                 <Card.Body>
                   <Card.Title> { golfClub.name.toUpperCase() } </Card.Title>
                   <Card.Text>
+                  <div className="golf-club-li-description">
                     { golfClub.description }
+                  </div>
                   </Card.Text>
                   <Button variant="outline-dark" onClick={() => viewGolfClubClick(golfClub) }>View more</Button>
                 </Card.Body>

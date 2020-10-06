@@ -6,7 +6,7 @@ import DataAreaContext from "../../utils/DataAreaContext";
 import GolfClubModal from "../Modal";
 
 function GolfClub() {
-  const { searchResults, golfClubs, setGolfClubModal } = useContext(DataAreaContext);
+  const { searchResults, setGolfClubModal } = useContext(DataAreaContext);
   const [modalShow, setModalShow] = useState(false);
 
   const viewGolfClubClick = (golfClubObject) => {

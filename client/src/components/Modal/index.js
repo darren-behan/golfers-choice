@@ -22,7 +22,7 @@ function GolfClubModal(props) {
           <Row>
             <Col xs={12} style={{ borderBottom: "1px solid #dee2e6"}}>
               <div style={{ textAlign: "center", paddingBottom: "15px" }}>
-                <img src="https://via.placeholder.com/400x400" />
+                <img src="https://via.placeholder.com/400x400" alt="hero-img-golf-club"/>
               </div>
             </Col>
             <Col xs={12}>

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import './index.css';
+import { Link } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
@@ -12,9 +13,9 @@ function HomeHeader() {
 
   return (
     <Navbar className="hero-navbar">
-      <a href="home">
+      <Link to="/home">
         <img src={ Logo } alt="logo"></img>
-      </a>
+      </Link>
       <h4 style={{ color: "#fff", fontWeight: "900" }}>olfers Choice</h4>
       <Nav className="ml-auto">
         {!isAuthenticated ? (

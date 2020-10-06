@@ -11,10 +11,11 @@ function HomeHeader() {
       <a href="home">
         <img src={ Logo } alt="logo"></img>
       </a>
+      <h4 style={{ color: "#fff", fontWeight: "900" }}>olfers Choice</h4>
       <Nav className="ml-auto">
         <Nav.Item>
           <Nav.Link className="nav-link" href="login" style={{color: '#697684', fontWeight: 400}}>
-            <Button variant="outline-light">Login</Button>
+            <Button variant="outline-light" style={{ border: "none" }}>Login</Button>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>

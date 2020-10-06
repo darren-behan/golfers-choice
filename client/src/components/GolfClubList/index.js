@@ -28,7 +28,9 @@ function GolfClub() {
                     { golfClub.description }
                   </div>
                   </Card.Text>
-                  <Button variant="outline-dark" onClick={() => viewGolfClubClick(golfClub) }>View more</Button>
+                  <div style={{ textAlign: "right" }}>
+                    <Button variant="outline-dark" onClick={() => viewGolfClubClick(golfClub) }>View more</Button>
+                  </div>
                 </Card.Body>
               </Card>
             </li>

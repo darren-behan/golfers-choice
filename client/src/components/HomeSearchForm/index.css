@@ -7,8 +7,11 @@
   display: flex;
 }
 
-.search-form-container {
-  width: 915px;
+.hero-header-col {
+  padding: 0;
+}
+
+.search-form-row {
   max-height: 200px;
   background-color: rgba(0,0,0,0.6);
   padding: 16px 18px;
@@ -20,8 +23,12 @@
   padding: 0 60px;
 }
 
-.search-form-col h2, .search-form-col p {
+.search-form-col h4, .search-form-col p {
   color: #ffffff!important;
+}
+
+.search-form-col p {
+  margin: 0;
 }
 
 .search-icon {
@@ -32,8 +39,11 @@
 }
 
 .search-form-input:focus {
-  border-color: #fff!important;
   box-shadow: none!important;
+}
+
+.form-control {
+  height: calc(3em + .75rem + 2px);
 }
 
 @media screen and (max-width: 500px) {

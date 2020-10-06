@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import "./index.css";
 import API from "../../utils/API";
 import { useHistory } from "react-router-dom";
-import Logo from "../../assets/img/golf-logo-header-transparent.png";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,6 +12,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import DataAreaContext from "../../utils/DataAreaContext";
+import HomeHeader from "../HomeHeader";
 
 function HomeSearchForm() {
   let history = useHistory();
@@ -43,23 +43,18 @@ function HomeSearchForm() {
   return (
     <div className="hero-content">
       <Container className="search-form-container">
-        <Row>
+        <Row className="hero-header-row">
+          <Col className="hero-header-col">
+            <HomeHeader />
+          </Col>
+        </Row>
+        <Row className="search-form-row">
           <Col className="search-form-col">
             <Form onSubmit={ handleSignupFormSubmit }>
               <div>
-                <a href="home">
-                  <img src={ Logo } alt="logo"></img>
-                </a>
-              </div>
-              <div>
-                <h2>Find your next golf club</h2>
+                <h4>Find your next golf club</h4>
               </div>
               <InputGroup className="mb-3">
-                <InputGroup.Append>
-                  <div className="search-icon">
-                    <FontAwesomeIcon icon={ faSearch } />
-                  </div>
-                </InputGroup.Append>
                 <FormControl
                   onChange={ handleInputChange }
                   name="county"
@@ -69,7 +64,7 @@ function HomeSearchForm() {
                   className="search-form-input"
                 />
                 <InputGroup.Append>
-                  <Button variant="outline-light" className="search-form-button" onClick={ handleSignupFormSubmit }>Search</Button>
+                  <Button variant="outline-light" className="search-form-button" onClick={ handleSignupFormSubmit }><FontAwesomeIcon icon={ faSearch }/> Search</Button>
                 </InputGroup.Append>
               </InputGroup>
               <div>

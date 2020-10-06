@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from "../components/HeaderMain";
-import SignupForm from '../components/FormSignup';
+import LoginForm from '../components/FormLogin';
 
-function Login() {
+function ResetPassword() {
   return (
     <>
       <Header />
-      <SignupForm />
+      <LoginForm />
     </>
   )
 }
 
-export default Login;
+export default ResetPassword;

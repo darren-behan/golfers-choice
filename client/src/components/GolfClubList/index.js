@@ -3,7 +3,7 @@ import './index.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import DataAreaContext from "../../utils/DataAreaContext";
-import GolfClubModal from "../GolfClubModal";
+import GolfClubModal from "../Modal";
 
 function GolfClub() {
   const { searchResults, golfClubs, setGolfClubModal } = useContext(DataAreaContext);

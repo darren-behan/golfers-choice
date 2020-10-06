@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import GolfClub from "./pages/GolfClub";
+import Favorites from "./pages/Favorites";
+import ResetPassword from "./pages/ResetPassword";
 import Wrapper from "./components/Wrapper";
 
 function App() {
@@ -50,7 +52,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ loggedInUserObject, newUserObject, validated, golfClub, searchResults, golfClubs, golfClubModal, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal }}
+    value={{ loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal }}
     >
       <Wrapper>
         <Switch>
@@ -58,6 +60,8 @@ function App() {
           <Route exact path="/golfclub" component={GolfClub} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path="/reset-password" component={ResetPassword} />
         </Switch>
       </Wrapper>
     </DataAreaContext.Provider>

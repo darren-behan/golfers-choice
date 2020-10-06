@@ -38,12 +38,12 @@
   padding: 0 5px;
 }
 
-.search-form-input:focus {
-  box-shadow: none!important;
+.search-form-input {
+  height: calc(3em + .75rem + 2px)!important;
 }
 
-.form-control {
-  height: calc(3em + .75rem + 2px);
+.search-form-input:focus {
+  box-shadow: none!important;
 }
 
 @media screen and (max-width: 500px) {

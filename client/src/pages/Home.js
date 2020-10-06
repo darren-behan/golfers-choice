@@ -2,8 +2,8 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import HeroImage from '../assets/img/home-hero.jpg';
-import HomeHeader from "../components/HomeHeader";
-import HomeSearchForm from "../components/HomeSearchForm";
+import HomeHeader from "../components/HeaderHome";
+import HomeSearchForm from "../components/FormHome";
 
 function Login() {
   const RowStyles ={

@@ -32,18 +32,10 @@ function LoginForm() {
       email: loggedInUserObject.email,
       password: loggedInUserObject.password
     })
-      .then((res) => console.log(res)
-      // setLoggedInUserObject({ ...loggedInUserObject,
-      //   email: "",
-      //   password: ""
-      // }
-      // )
-      )
       .then(() => setIsAuthenticated(true))
       .catch(err => console.log(err));
   };
 
-  console.log(loggedInUserObject);
   return (
     <Container fluid="sm" className="p-5">
       <Row className="p-2">

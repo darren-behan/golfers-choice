@@ -12,7 +12,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import DataAreaContext from "../../utils/DataAreaContext";
-import HomeHeader from "../HomeHeader";
+import HomeHeader from "../HeaderHome";
 
 function HomeSearchForm() {
   let history = useHistory();

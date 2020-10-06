@@ -21,6 +21,8 @@ function App() {
   const [newUserObject, setNewUserObject] = useState({});
   // This is used to create an object to capture the login details so we can send the data to the server, confirm the user and proceed to log them in
   const [loggedInUserObject, setLoggedInUserObject] = useState({});
+  // This is used to create an object to capture the old & new password so we can send the data to the server and proceed to th password
+  const [updatePasswordUserObject, setUpdatePasswordUserObject] = useState({});
   // This is used to confirm the user is logged in and redirect them to the home page
   const [isAuthenticated, setIsAuthenticated] = useState( false );
   // This is used to create an object to capture the county searched so we can send the data to the server and return the golf clubs in that county and display to the user
@@ -52,7 +54,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject }}
     >
       <Wrapper>
         <Switch>

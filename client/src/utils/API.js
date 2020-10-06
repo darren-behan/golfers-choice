@@ -10,6 +10,12 @@ export default {
   loginUser: function(userData) {
     return axios.post("/api/users/login", userData);
   },
+  // Gets the book with the given id
+  updateUser: function(userData) {
+    return axios.put("/api/users/" + userData.id, {
+      params: userData
+    });
+  },
   findGolfClub: function(userData) {
     return axios.get("/api/golfclub", {
       params: userData

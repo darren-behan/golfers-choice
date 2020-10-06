@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from "../components/HeaderMain";
-import LoginForm from '../components/FormLogin';
+import ResetPasswordForm from '../components/FormResetPassword';
 
 function ResetPassword() {
   return (
     <>
       <Header />
-      <LoginForm />
+      <ResetPasswordForm />
     </>
   )
 }

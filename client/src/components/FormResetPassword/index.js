@@ -10,15 +10,15 @@ import Logo from "../../assets/img/golf-logo-header.jpg";
 import DataAreaContext from "../../utils/DataAreaContext";
 
 function LoginForm() {
-  const { validated, loggedInUserObject, setValidated, setIsAuthenticated, setLoggedInUserObject } = useContext(DataAreaContext);
+  const { validated, loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setLoggedInUserObject, setUpdatePasswordUserObject } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setLoggedInUserObject({...loggedInUserObject, [name]: value})
+    setUpdatePasswordUserObject({...updatePasswordUserObject, [name]: value})
   };
 
-  const handleSignupFormSubmit = (event) => {
+  const handleResetPasswordFormSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -26,12 +26,12 @@ function LoginForm() {
       event.stopPropagation();
     }
 
-    setValidated(true);
-    API.loginUser({
-      email: loggedInUserObject.email,
-      password: loggedInUserObject.password
+    API.updateUser({
+      id: loggedInUserObject.data.id,
+      oldPassword: updatePasswordUserObject.oldPassword,
+      newPassword: updatePasswordUserObject.newPassword
     })
-      .then((res) => setLoggedInUserObject(res))
+      .then((res) => setUpdatePasswordUserObject(res))
       .then(() => setIsAuthenticated(true))
       .catch(err => console.log(err));
   };
@@ -46,18 +46,18 @@ function LoginForm() {
             </a>
           </Col>
           <Col className="pt-3" sm={12}>
-            <h2 style={{color: '#697684', fontWeight: 400}}>Sign in</h2>
+            <h2 style={{color: '#697684', fontWeight: 400}}>Reset Password</h2>
           </Col>
           <Col sm={12}>
-            <Form pt={20} noValidate validated={validated} onSubmit={handleSignupFormSubmit}>
-              <Form.Group as={Row} controlId="formHorizontalEmail">
+            <Form pt={20} noValidate validated={validated} onSubmit={handleResetPasswordFormSubmit}>
+              <Form.Group as={Row} controlId="formHorizontalPassword">
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange}
-                    type="email" 
-                    name="email"
-                    value={ loggedInUserObject.email }
-                    placeholder="Email" 
+                    type="oldPassword" 
+                    name="oldPassword"
+                    value={ updatePasswordUserObject.oldPassword }
+                    placeholder="Enter your old password" 
                   />
                 </Col>
               </Form.Group>
@@ -66,17 +66,17 @@ function LoginForm() {
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange}
-                    type="password"
-                    name="password"
-                    value={ loggedInUserObject.password }
-                    placeholder="Password" 
+                    type="newPassword"
+                    name="newPassword"
+                    value={ updatePasswordUserObject.newPassword }
+                    placeholder="Enter your new password" 
                   />
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Row}>
-                <Col sm={{ span: 10 }}>
-                  <Button variant="outline-dark" type="submit">Sign in</Button>
+              <Form.Group as={Row} style={{ textAlign: "right" }}>
+                <Col sm={{ span: 12 }}>
+                  <Button variant="outline-dark" type="submit">Reset Password</Button>
                 </Col>
               </Form.Group>
             </Form>

@@ -53,13 +53,16 @@ UserSchema.methods.validPassword = function(password) {
 
 // Before a User is created, we will automatically hash their password
 UserSchema.pre("save", function(next) {
-  console.log(this);
-  this.password = bcrypt.hashSync(
-    this.password,
-    bcrypt.genSaltSync(10),
-    null
-  );
-  next();
+  if (document.isModified()) {
+    this.password = bcrypt.hashSync(
+      this.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
+    next();
+  } else {
+    next();
+  }
 });
 
 const User = mongoose.model("User", UserSchema);

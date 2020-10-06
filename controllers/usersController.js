@@ -22,8 +22,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    const password = req.body.params.newPassword;
     db.User
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.body.params.id }, { password: password }, {
+        new: true
+      })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

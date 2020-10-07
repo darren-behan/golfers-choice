@@ -33,6 +33,8 @@ function App() {
   const [golfClubs, setGolfClubs] = useState([]);
   // This is used to store the golf club details when you want to view that specific golf club
   const [golfClubModal, setGolfClubModal] = useState({});
+  // This is used to store a boolean value for when a USER clicks delete account, it will be set to true and a modal will show
+  const [modalDeleteAccountShow, setModalDeleteAccountShow] = useState(false);
 
   // useEffect is listening on load of site
   // If isAuthenticated changes to true, the user is navigated to the home page 
@@ -54,7 +56,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow }}
     >
       <Wrapper>
         <Switch>

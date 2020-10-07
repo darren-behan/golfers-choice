@@ -2,13 +2,26 @@ import React, { useContext } from 'react';
 import Modal from 'react-bootstrap/esm/Modal';
 import Button from 'react-bootstrap/Button';
 import DataAreaContext from "../../utils/DataAreaContext";
+import API from "../../utils/API";
 
 function ModalDeleteAccount() {
-  const { modalDeleteAccountShow, setModalDeleteAccountShow } = useContext(DataAreaContext);
+  const { modalDeleteAccountShow, loggedInUserObject, setIsAuthenticated, setModalDeleteAccountShow } = useContext(DataAreaContext);
+
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+
+    API.deleteUser({
+      id: loggedInUserObject.data.id
+    })
+      .then(() => setIsAuthenticated(false))
+      .then(() => setModalDeleteAccountShow(false))
+      .catch(err => console.log(err));
+  };
+
   return(
     <Modal show={modalDeleteAccountShow} onHide={() => setModalDeleteAccountShow(false)}>
       <Modal.Header closeButton>
-        <Modal.Title>We're sad to see you leave 😞</Modal.Title>
+        <Modal.Title>We're sad to see you leave <span role="img" aria-label="disappointed-emoji">😞</span></Modal.Title>
       </Modal.Header>
 
       <Modal.Body closeButton>
@@ -16,7 +29,7 @@ function ModalDeleteAccount() {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="danger">Delete account</Button>
+        <Button variant="danger" onClick={ handleButtonClick }>Delete account</Button>
       </Modal.Footer>
     </Modal>
   )

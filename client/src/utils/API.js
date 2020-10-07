@@ -7,12 +7,19 @@ export default {
   createUser: function(userData) {
     return axios.post("/api/users", userData);
   },
+  // Logs in a user
   loginUser: function(userData) {
     return axios.post("/api/users/login", userData);
   },
-  // Gets the book with the given id
+  // Updates the user with the given id
   updateUser: function(userData) {
     return axios.put("/api/users/" + userData.id, {
+      params: userData
+    });
+  },
+  // Deletes the user with the given id
+  deleteUser: function(userData) {
+    return axios.delete("/api/users/" + userData.id, {
       params: userData
     });
   },

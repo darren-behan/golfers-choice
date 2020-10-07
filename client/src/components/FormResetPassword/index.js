@@ -10,7 +10,7 @@ import Logo from "../../assets/img/golf-logo-header.jpg";
 import DataAreaContext from "../../utils/DataAreaContext";
 
 function LoginForm() {
-  const { validated, loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setLoggedInUserObject, setUpdatePasswordUserObject } = useContext(DataAreaContext);
+  const { validated, loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {

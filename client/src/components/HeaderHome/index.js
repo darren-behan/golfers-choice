@@ -13,7 +13,7 @@ function HomeHeader() {
 
   return (
     <Navbar className="hero-navbar">
-      <Link to="/home">
+      <Link to="home">
         <img src={ Logo } alt="logo"></img>
       </Link>
       <h4 style={{ color: "#fff", fontWeight: "900" }}>olfers Choice</h4>
@@ -21,12 +21,12 @@ function HomeHeader() {
         {!isAuthenticated ? (
           <>
           <Nav.Item>
-            <Nav.Link className="nav-link" href="login" style={{color: '#697684', fontWeight: 400}}>
+            <Nav.Link className="nav-link" as={ Link } to="login" style={{color: '#697684', fontWeight: 400}}>
               <Button variant="outline-light" style={{ border: "none" }}>Login</Button>
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link id="nav-link-join" className="nav-link" href="signup" style={{ color: '#697684', fontWeight: 400 }}>
+            <Nav.Link id="nav-link-join" className="nav-link" as={ Link } to="signup" style={{ color: '#697684', fontWeight: 400 }}>
               <Button variant="outline-light">Join</Button>
             </Nav.Link>
           </Nav.Item>

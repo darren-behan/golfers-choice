@@ -13,6 +13,7 @@ const getUserDtoFromModel = (model) => {
 // Defining methods for the usersController
 module.exports = {
   create: function(req, res) {
+    console.log(req.body);
     db.User
       .create(req.body)
       .then(dbModel => {

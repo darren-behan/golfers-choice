@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from "react-router-dom";
 import './index.css';
 import API from "../../utils/API";
 import Form from 'react-bootstrap/Form';
@@ -41,9 +42,9 @@ function LoginForm() {
       <Row className="p-2">
         <Col className="p-2" style={{ backgroundColor: "#fff", borderRadius: "5px", boxShadow: "5px 5px 5px #046307" }}>
           <Col sm={12} style={{ textAlign: "center" }}>
-            <a href="home">
+            <Link to="home">
               <img src={ Logo } alt="logo"></img>
-            </a>
+            </Link>
           </Col>
           <Col className="pt-3" sm={12}>
             <h2 style={{color: '#697684', fontWeight: 400}}>Reset Password</h2>

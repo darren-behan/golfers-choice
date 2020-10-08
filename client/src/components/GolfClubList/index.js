@@ -4,14 +4,28 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import DataAreaContext from "../../utils/DataAreaContext";
 import GolfClubModal from "../ModalGolfClub";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+// import { faStar } from '@fortawesome/free-regular-svg-icons';
 
 function GolfClub() {
-  const { searchResults, setGolfClubModal } = useContext(DataAreaContext);
+  const { searchResults, setGolfClubModal, starIconColor, setStarIconColor } = useContext(DataAreaContext);
   const [modalShow, setModalShow] = useState(false);
 
   const viewGolfClubClick = (golfClubObject) => {
     setGolfClubModal(golfClubObject);
     setModalShow(true);
+  }
+
+  const onClickStar = (e) => {
+    e.preventDefault();
+    if (starIconColor) {
+      setStarIconColor(false);
+      e.target.style.color = '#046307';
+    } else {
+      setStarIconColor(true);
+      e.target.style.color = '#ffa500';
+    }
   }
 
   return (
@@ -22,7 +36,12 @@ function GolfClub() {
             <li key={ golfClub._id } className="golf-club-li">
               <Card>
                 <Card.Body>
-                  <Card.Title> { golfClub.name.toUpperCase() } </Card.Title>
+                  <Card.Title>
+                    { golfClub.name.toUpperCase() }
+                    <span style={{ float: "right", color: "#046307", cursor: "pointer" }} onClick={ onClickStar }>
+                      <FontAwesomeIcon icon={ faStar } />
+                    </span>
+                  </Card.Title>
                   <Card.Text className="golf-club-li-description">
                     { golfClub.description }
                   </Card.Text>

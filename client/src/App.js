@@ -35,6 +35,8 @@ function App() {
   const [golfClubModal, setGolfClubModal] = useState({});
   // This is used to store a boolean value for when a USER clicks delete account, it will be set to true and a modal will show
   const [modalDeleteAccountShow, setModalDeleteAccountShow] = useState(false);
+  // This is used to store a boolean value for when a USER clicks a star icon to favorite a golf club
+  const [starIconColor, setStarIconColor] = useState(false);
 
   // useEffect is listening on load of site
   // If isAuthenticated changes to true, the user is navigated to the home page 
@@ -56,7 +58,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, starIconColor, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setStarIconColor }}
     >
       <Wrapper>
         <Switch>

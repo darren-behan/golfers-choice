@@ -53,18 +53,48 @@ UserSchema.methods.validPassword = function(password) {
 
 // Before a User is created, we will automatically hash their password
 UserSchema.pre("save", function(next) {
-  console.log("bcrypt");
-  // if (document.isModified()) {
-    this.password = bcrypt.hashSync(
-      this.password,
-      bcrypt.genSaltSync(10),
-      null
-    );
-    next();
-  // } else {
-  //   next();
-  // }
+  console.log("save");
+  this.password = bcrypt.hashSync(
+    this.password,
+    bcrypt.genSaltSync(10),
+    null
+  );
+  next();
 });
+
+// UserSchema.pre('findOneAndUpdate', bcrypt.genSaltSync(10, 
+//   function (err, salt) { 
+//     if (err) 
+//       return next(err) 
+//       bcrypt.hash(user.password, salt)
+//     }, function() {
+//     console.log("update");
+  // console.log(this.getQuery._id);
+  // const docToUpdate = await this.model.findOne(this.getQuery());
+  // const hashedPassword = bcrypt.hashSync(
+  //   docToUpdate.password,
+  //   bcrypt.genSaltSync(10),
+  //   null
+  // );
+  // console.log(docToUpdate);
+  // console.log(this.model);
+  // console.log(hashedPassword);
+
+  // UserSchema.updateOne({
+  //   $set: { 
+  //     modified_at: new Date(),
+  //     password: this.password
+  //   }
+  // })
+  // this.set({ 
+  //   modified_at: new Date(),
+  //   password: bcrypt.hashSync(
+  //     this.password,
+  //     bcrypt.genSaltSync(10),
+  //     null
+  //   )
+  // });
+// }));
 
 const User = mongoose.model("User", UserSchema);
 

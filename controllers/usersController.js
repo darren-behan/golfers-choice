@@ -23,10 +23,22 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    const password = req.body.params.newPassword;
     db.User
-      .findOneAndUpdate({ _id: req.body.params.id }, { password: password }, {
-        new: true
+      .findByIdAndUpdate(req.body.params.id, req.body.params, function (err, user) {
+        if (err) {
+          return next(err);
+        } else {
+          user.password = req.body.params.newPassword;
+          user.modified_at = new Date();
+          user.save(function (err, user) {
+            if (err) {
+              res.send("Error: ", err);
+            } else {
+              res.send("password updated successfully!");
+              res.json(user);
+            }
+          })
+        }
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

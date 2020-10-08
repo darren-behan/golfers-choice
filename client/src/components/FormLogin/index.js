@@ -32,7 +32,7 @@ function LoginForm() {
       email: loggedInUserObject.email,
       password: loggedInUserObject.password
     })
-      .then((res) => setLoggedInUserObject(res))
+      .then((res) => setLoggedInUserObject(res.data))
       .then(() => setIsAuthenticated(true))
       .catch(err => console.log(err));
   };

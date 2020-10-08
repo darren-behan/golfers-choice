@@ -5,16 +5,17 @@ import DataAreaContext from "../../utils/DataAreaContext";
 import API from "../../utils/API";
 
 function ModalDeleteAccount() {
-  const { modalDeleteAccountShow, loggedInUserObject, setIsAuthenticated, setModalDeleteAccountShow } = useContext(DataAreaContext);
+  const { modalDeleteAccountShow, loggedInUserObject, setIsAuthenticated, setModalDeleteAccountShow, setLoggedInUserObject } = useContext(DataAreaContext);
 
   const handleButtonClick = (event) => {
     event.preventDefault();
 
     API.deleteUser({
-      id: loggedInUserObject.data.id
+      id: loggedInUserObject.id
     })
       .then(() => setIsAuthenticated(false))
       .then(() => setModalDeleteAccountShow(false))
+      .then(() => setLoggedInUserObject({}))
       .catch(err => console.log(err));
   };
 

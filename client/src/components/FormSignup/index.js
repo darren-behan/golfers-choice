@@ -12,7 +12,7 @@ import Logo from "../../assets/img/golf-logo-header.jpg";
 import DataAreaContext from "../../utils/DataAreaContext";
 
 function SignUpForm() {
-  const { newUserObject, validated, setNewUserObject, setValidated, setIsAuthenticated } = useContext(DataAreaContext);
+  const { newUserObject, validated, setNewUserObject, setValidated, setIsAuthenticated, setLoggedInUserObject } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -37,13 +37,7 @@ function SignUpForm() {
       username: newUserObject.username,
       password: newUserObject.password
     })
-      .then(() => setNewUserObject({ ...newUserObject,
-        first_name: "",
-        last_name: "",
-        email: "",
-        username: "",
-        password: ""
-      }))
+      .then((res) => setLoggedInUserObject(res.data))
       .then(() => setIsAuthenticated(true))
       .catch(err => console.log(err));
   };

@@ -31,7 +31,7 @@ function HomeSearchForm() {
       county: golfClub.county
     })
       .then(res => {
-          if(res.data.length > 0 && res.data != null) {
+          if(res.status === 200) {
             history.push("/golfclub")
           }
           setSearchResults(res.data);

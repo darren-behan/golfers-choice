@@ -23,10 +23,8 @@ function GolfClub() {
               <Card>
                 <Card.Body>
                   <Card.Title> { golfClub.name.toUpperCase() } </Card.Title>
-                  <Card.Text>
-                  <div className="golf-club-li-description">
+                  <Card.Text className="golf-club-li-description">
                     { golfClub.description }
-                  </div>
                   </Card.Text>
                   <div style={{ textAlign: "right" }}>
                     <Button variant="outline-dark" onClick={() => viewGolfClubClick(golfClub) }>View more</Button>

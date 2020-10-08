@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import './index.css';
 import API from "../../utils/API";
 import Form from 'react-bootstrap/Form';
@@ -10,7 +10,8 @@ import Button from 'react-bootstrap/Button';
 import Logo from "../../assets/img/golf-logo-header.jpg";
 import DataAreaContext from "../../utils/DataAreaContext";
 
-function LoginForm() {
+function ResetPasswordForm() {
+  let history = useHistory();
   const { validated, loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
@@ -28,11 +29,15 @@ function LoginForm() {
     }
 
     API.updateUser({
-      id: loggedInUserObject.data.id,
+      id: loggedInUserObject.id,
       oldPassword: updatePasswordUserObject.oldPassword,
       newPassword: updatePasswordUserObject.newPassword
     })
-      .then((res) => setUpdatePasswordUserObject(res))
+      .then((res) => {
+        if(res.status === 200) {
+          history.push("/home")
+        }
+      })
       .then(() => setIsAuthenticated(true))
       .catch(err => console.log(err));
   };
@@ -88,4 +93,4 @@ function LoginForm() {
   )
 }
 
-export default LoginForm;
+export default ResetPasswordForm;

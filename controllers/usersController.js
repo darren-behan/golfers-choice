@@ -4,6 +4,7 @@ const db = require("../models");
 
 const getUserDtoFromModel = (model) => {
   return {
+    id: model._id,
     firstName: model.first_name,
     lastName: model.last_name,
     userName: model.username,
@@ -34,14 +35,11 @@ module.exports = {
             if (err) {
               res.send("Error: ", err);
             } else {
-              res.send("password updated successfully!");
-              res.json(user);
+              res.send(user);
             }
           })
         }
       })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
     db.User

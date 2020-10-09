@@ -42,22 +42,11 @@ module.exports = {
   },
   updateFavorites: function(req, res) {
     console.log(req.body)
-    // db.User
-    //   .findByIdAndUpdate(req.body.params.id, req.body.params, function (err, user) {
-    //     if (err) {
-    //       return next(err);
-    //     } else {
-    //       user.password = req.body.params.newPassword;
-    //       user.modified_at = new Date();
-    //       user.save(function (err, user) {
-    //         if (err) {
-    //           res.send("Error: ", err);
-    //         } else {
-    //           res.send(user);
-    //         }
-    //       })
-    //     }
-    //   })
+    const loggedInUserId = req.body.params.loggedInUserId
+    db.User
+      .findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $push: { favorites: req.body.params.golfClubId } }, { new: true })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
     db.User

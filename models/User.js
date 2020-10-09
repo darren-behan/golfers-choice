@@ -43,7 +43,13 @@ const UserSchema = new Schema({
   },
   modified_by: {
     type: String
-  }
+  },
+  favorites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "golfClubs"
+    }
+  ]
 });
 
 // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database

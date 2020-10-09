@@ -40,6 +40,25 @@ module.exports = {
         }
       })
   },
+  updateFavorites: function(req, res) {
+    console.log(req.body)
+    // db.User
+    //   .findByIdAndUpdate(req.body.params.id, req.body.params, function (err, user) {
+    //     if (err) {
+    //       return next(err);
+    //     } else {
+    //       user.password = req.body.params.newPassword;
+    //       user.modified_at = new Date();
+    //       user.save(function (err, user) {
+    //         if (err) {
+    //           res.send("Error: ", err);
+    //         } else {
+    //           res.send(user);
+    //         }
+    //       })
+    //     }
+    //   })
+  },
   remove: function(req, res) {
     db.User
       .findById({ _id: req.params.id })

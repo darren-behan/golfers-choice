@@ -13,8 +13,15 @@ router.route("/")
 router.route("/:id")
   // PUT route for updating an existing user
   .put(usersController.update)
+  // PUT route for updating an existing user to add their favorite golf clubs
+  .put(usersController.updateFavorites)
   // DELETE route for removing an existing user
   .delete(usersController.remove);
+
+// Matches with "/api/users/favorites/:id"
+router.route("/favorites/:id")
+  // PUT route for updating an existing user to add their favorite golf clubs
+  .put(usersController.updateFavorites)
 
 // Matches with "/api/users/login"
 router.route("/login")

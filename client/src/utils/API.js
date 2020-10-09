@@ -23,6 +23,13 @@ export default {
       params: userData
     });
   },
+  // Saves the golf club to the user
+  favoriteGolfClub: function(userData) {
+    console.log(userData);
+    return axios.put("/api/users/favorites/" + userData.loggedInUserId, {
+      params: userData
+    });
+  },
   findGolfClub: function(userData) {
     return axios.get("/api/golfclub", {
       params: userData

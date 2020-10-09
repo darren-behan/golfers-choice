@@ -6,10 +6,10 @@ import DataAreaContext from "../../utils/DataAreaContext";
 import GolfClubModal from "../ModalGolfClub";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-// import { faStar } from '@fortawesome/free-regular-svg-icons';
+import API from "../../utils/API";
 
 function GolfClub() {
-  const { searchResults, setGolfClubModal, starIconColor, setStarIconColor } = useContext(DataAreaContext);
+  const { loggedInUserObject, searchResults, setGolfClubModal, starIconColor, setStarIconColor } = useContext(DataAreaContext);
   const [modalShow, setModalShow] = useState(false);
 
   const viewGolfClubClick = (golfClubObject) => {
@@ -26,7 +26,30 @@ function GolfClub() {
       setStarIconColor(true);
       e.target.style.color = '#ffa500';
     }
+    
+    const golfClubId = e.target.parentNode.id;
+    const loggedInUserId = loggedInUserObject.id;
+
+    API.favoriteGolfClub({
+      golfClubId: golfClubId,
+      loggedInUserId: loggedInUserId
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+
   }
+
+  // with the API, send the golfClubId and the userId
+  // use a PUT request and pass through the userId
+  // add below to Schema:
+    // favorites: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "Note"
+    //   }
+    // ]
+  // findOneAndUpdate the golfClubId - example below:
+    // db.User.findOneAndUpdate({req.id}, { $push: { favorites: id } }, { new: true }))
 
   return (
     <>
@@ -38,8 +61,8 @@ function GolfClub() {
                 <Card.Body>
                   <Card.Title>
                     { golfClub.name.toUpperCase() }
-                    <span style={{ float: "right", color: "#046307", cursor: "pointer" }} onClick={ onClickStar }>
-                      <FontAwesomeIcon icon={ faStar } />
+                    <span style={{ float: "right", color: "#046307", cursor: "pointer" }}>
+                      <FontAwesomeIcon icon={ faStar } id={ golfClub._id } onClick={ onClickStar }/>
                     </span>
                   </Card.Title>
                   <Card.Text className="golf-club-li-description">

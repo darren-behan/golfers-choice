@@ -65,12 +65,16 @@ function App() {
     const loggedInUserId = loggedInUserObject.id;
     const golfClubId = e.target.parentNode.id;
 
-    // API.favoriteGolfClub({
-    //   golfClubId: golfClubId,
-    //   loggedInUserId: loggedInUserId
-    // })
-    // .then(res => console.log(res))
-    // .catch(err => console.log(err));
+    setFavorites(golfClubId)
+
+    API.favoriteGolfClub({
+      golfClubId: golfClubId,
+      loggedInUserId: loggedInUserId
+    })
+    .then(res =>
+      setFavorites(res.data.favorites) 
+    )
+    .catch(err => console.log(err));
   }
 
   return (

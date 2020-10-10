@@ -2,5 +2,5 @@
 
 module.exports = {
   User: require("./User"),
-  GolfClub: require("./GolfClub")
+  GolfClub: require("./Golfclub")
 };

@@ -44,12 +44,23 @@ module.exports = {
   updateFavorites: function(req, res) {
     console.log(req.body)
     db.User
-      .findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $push: { favorites: req.body.params.golfClubId } }, { new: true })
+      .findById({ _id: req.body.params.loggedInUserId })
       .then(dbModel => {
-        const data = getUserDtoFromModel(dbModel);
-        res.json(data);
+        dbModel.favorites.includes(req.body.params.golfClubId) ? 
+        db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $unset: { favorites: req.body.params.golfClubId } }, { new: true })
+        .then(dbModel => {
+          const data = getUserDtoFromModel(dbModel);
+          res.json(data);
+        })
+        .catch(err => res.status(422).json(err))
+        :
+        db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $push: { favorites: req.body.params.golfClubId } }, { new: true })
+        .then(dbModel => {
+          const data = getUserDtoFromModel(dbModel);
+          res.json(data);
+        })
+        .catch(err => res.status(422).json(err))
       })
-      .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
     db.User

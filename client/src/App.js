@@ -35,14 +35,17 @@ function App() {
   const [golfClubModal, setGolfClubModal] = useState({});
   // This is used to store a boolean value for when a USER clicks delete account, it will be set to true and a modal will show
   const [modalDeleteAccountShow, setModalDeleteAccountShow] = useState(false);
-  // This is used to store a boolean value for when a USER clicks a star icon to favorite a golf club
-  const [starIconColor, setStarIconColor] = useState(false);
+  // This is used to store an object which has the golf club the user wants to favorite and a boolean value to show if that star should be green(false) or yellow(true)
+  const [favorites, setFavorites] = useState([]); //  id: "", stored: false 
+  // 
+  const [modalShow, setModalShow] = useState(false);
 
   // useEffect is listening on load of site
   // If isAuthenticated changes to true, the user is navigated to the home page 
   useEffect(() => {
     if(isAuthenticated) {
       history.push("/home");
+      setFavorites( loggedInUserObject.favorites );
     };
     loadGolfClubs();
   }, [isAuthenticated]);
@@ -56,9 +59,23 @@ function App() {
       .catch(err => console.log(err));
   };
 
+  const onClickStar = (e) => {
+    e.preventDefault();
+
+    const loggedInUserId = loggedInUserObject.id;
+    const golfClubId = e.target.parentNode.id;
+
+    // API.favoriteGolfClub({
+    //   golfClubId: golfClubId,
+    //   loggedInUserId: loggedInUserId
+    // })
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err));
+  }
+
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, starIconColor, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setStarIconColor }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar }}
     >
       <Wrapper>
         <Switch>

@@ -7,7 +7,8 @@ const getUserDtoFromModel = (model) => {
     id: model._id,
     firstName: model.first_name,
     lastName: model.last_name,
-    userName: model.username,
+    email: model.email,
+    favorites: model.favorites
   }
 }
 
@@ -42,10 +43,12 @@ module.exports = {
   },
   updateFavorites: function(req, res) {
     console.log(req.body)
-    const loggedInUserId = req.body.params.loggedInUserId
     db.User
       .findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $push: { favorites: req.body.params.golfClubId } }, { new: true })
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        const data = getUserDtoFromModel(dbModel);
+        res.json(data);
+      })
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
@@ -60,7 +63,8 @@ module.exports = {
     res.json({
       email: req.user.email,
       firstName: req.user.first_name,
-      id: req.user.id
+      id: req.user.id,
+      favorites: req.user.favorites
     });
   }
 };

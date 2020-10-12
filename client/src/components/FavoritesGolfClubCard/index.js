@@ -8,7 +8,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 import {isEmpty} from "lodash";
 
 function GolfClubCard(props) {
-  const { setGolfClubModal, favorites, setModalShow, onClickStar } = useContext(DataAreaContext);
+  const { setGolfClubModal, favorites, golfClubs, setModalShow, onClickStar } = useContext(DataAreaContext);
 
   useEffect(() => {
     console.log(favorites);
@@ -19,32 +19,20 @@ function GolfClubCard(props) {
     setModalShow(true);
   }
 
-  function UnfavoritedStar() {
-    return  <span style={{ float: "right", color: "#046307", cursor: "pointer" }}>
-              <FontAwesomeIcon icon={ faStar } id={ props.golfClub._id } onClick={(e) => onClickStar(e) }/>
-            </span>
-  }
-
   function FavoritedStar() {
     return  <span style={{ float: "right", color: "#ffa500", cursor: "pointer" }}>
               <FontAwesomeIcon icon={ faStar } id={ props.golfClub._id } onClick={(e) => onClickStar(e) }/>
             </span>
   }
-
+  console.log(props)
   return (
     <>
+      {favorites.includes(props.golfClub._id) ?
       <Card>
         <Card.Body>
           <Card.Title>
             { props.golfClub.name.toUpperCase() }
-            { isEmpty(favorites) ? 
-              <UnfavoritedStar />
-              :
-              favorites.includes(props.golfClub._id) ? 
-              <FavoritedStar /> 
-              : 
-              <UnfavoritedStar /> 
-            }
+            <FavoritedStar /> 
           </Card.Title>
           <Card.Text className="golf-club-li-description">
             { props.golfClub.description }
@@ -54,6 +42,9 @@ function GolfClubCard(props) {
           </div>
         </Card.Body>
       </Card>
+      :
+      <div></div>
+      }
     </>
   )
 }

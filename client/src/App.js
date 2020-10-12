@@ -36,7 +36,7 @@ function App() {
   // This is used to store a boolean value for when a USER clicks delete account, it will be set to true and a modal will show
   const [modalDeleteAccountShow, setModalDeleteAccountShow] = useState(false);
   // This is used to store an object which has the golf club the user wants to favorite and a boolean value to show if that star should be green(false) or yellow(true)
-  const [favorites, setFavorites] = useState([]); //  id: "", stored: false 
+  const [favorites, setFavorites] = useState([]);
   // 
   const [modalShow, setModalShow] = useState(false);
 
@@ -64,8 +64,6 @@ function App() {
 
     const loggedInUserId = loggedInUserObject.id;
     const golfClubId = e.target.parentNode.id;
-
-    setFavorites(golfClubId)
 
     API.favoriteGolfClub({
       golfClubId: golfClubId,

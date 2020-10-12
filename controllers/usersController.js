@@ -1,5 +1,6 @@
 // Dependencies
 // Requiring our models
+const { ObjectId } = require("mongoose");
 const db = require("../models");
 
 const getUserDtoFromModel = (model) => {
@@ -47,8 +48,9 @@ module.exports = {
       .findById({ _id: req.body.params.loggedInUserId })
       .then(dbModel => {
         dbModel.favorites.includes(req.body.params.golfClubId) ? 
-        db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $unset: { favorites: req.body.params.golfClubId } }, { new: true })
+        db.User.updateOne({ _id: req.body.params.loggedInUserId }, { $pull: { favorites: req.body.params.golfClubId } })
         .then(dbModel => {
+          console.log("remove");
           const data = getUserDtoFromModel(dbModel);
           res.json(data);
         })
@@ -56,6 +58,7 @@ module.exports = {
         :
         db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $push: { favorites: req.body.params.golfClubId } }, { new: true })
         .then(dbModel => {
+          console.log("update");
           const data = getUserDtoFromModel(dbModel);
           res.json(data);
         })

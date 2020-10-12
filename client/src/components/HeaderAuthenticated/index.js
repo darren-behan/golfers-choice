@@ -8,11 +8,12 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import DataAreaContext from "../../utils/DataAreaContext";
 
 function HeaderAuthenticated() {
-  const { setIsAuthenticated, setModalDeleteAccountShow, setLoggedInUserObject } = useContext(DataAreaContext);
+  const { setIsAuthenticated, setModalDeleteAccountShow, setLoggedInUserObject, setFavorites } = useContext(DataAreaContext);
 
   const handleOnClickLogout = () => {
     setIsAuthenticated(false);
     setLoggedInUserObject({});
+    setFavorites({});
   };
 
   const handleOnClickDeleteAccount = () => {

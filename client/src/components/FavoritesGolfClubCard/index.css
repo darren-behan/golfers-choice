@@ -1,0 +1,13 @@
+.card {
+  background-color: #fbfbfb;
+}
+
+.card-title.capitalize {
+  text-transform: capitalize;
+}
+
+.golf-club-li-description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

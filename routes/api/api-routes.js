@@ -9,7 +9,6 @@ module.exports = function (app) {
     // Find all golf clubs
     db.Golfclub.find({})
     .then(dbGolfClub => {
-      console.log(dbGolfClub);
       res.json(dbGolfClub);
     })
     .catch(({ message }) => {
@@ -24,7 +23,6 @@ module.exports = function (app) {
       name: req.params.name
     })
     .then(dbGolfClub => {
-      console.log(dbGolfClub);
       res.json(dbGolfClub);
     })
     .catch(({ message }) => {
@@ -39,7 +37,6 @@ module.exports = function (app) {
       county: req.params.county
     })
     .then(dbGolfClub => {
-      console.log(dbGolfClub);
       res.json(dbGolfClub);
     })
     .catch(({ message }) => {
@@ -64,7 +61,6 @@ module.exports = function (app) {
       membership_full_men: req.body.membership_full_men
     })
     .then(function (dbGolfClub) {
-      console.log(dbGolfClub);
       res.json(dbGolfClub);
     })
     .catch(({ message }) => {

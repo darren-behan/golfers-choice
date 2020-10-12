@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from "../components/HeaderMain";
-import Row from 'react-bootstrap/Row';
 import Grid from "../components/GolfClubGrid";
 import DeleteAccountModal from "../components/ModalDeleteAccount";
 
@@ -9,9 +8,7 @@ function Login() {
   return (
     <>
       <Header />
-      <Row>
-        <Grid />
-      </Row>
+      <Grid />
       <DeleteAccountModal />
     </>
   )

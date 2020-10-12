@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import DataAreaContext from "../../utils/DataAreaContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import {isEmpty} from "lodash";
+import { isEmpty } from "lodash";
 
 function GolfClubCard(props) {
   const { setGolfClubModal, favorites, setModalShow, onClickStar } = useContext(DataAreaContext);

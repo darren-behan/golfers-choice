@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const session = require("express-session");
 const passport = require("./config/passport");
+require('dotenv').config();
 
 // Sets up the Express App
 const app = express();

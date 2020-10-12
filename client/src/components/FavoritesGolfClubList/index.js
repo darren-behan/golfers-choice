@@ -7,9 +7,6 @@ import GolfClubCard from "../FavoritesGolfClubCard";
 function GolfClub() {
   const { favorites, modalShow, loggedInUserObject, golfClubs, setModalShow } = useContext(DataAreaContext);
 
-  console.log(golfClubs);
-  console.log(loggedInUserObject);
-  console.log(favorites);
   return (
     <>
       {favorites.length || favorites === undefined ? (

@@ -25,7 +25,6 @@ export default {
   },
   // Saves the golf club to the user
   favoriteGolfClub: function(userData) {
-    console.log(userData);
     return axios.put("/api/users/favorites/" + userData.loggedInUserId, {
       params: userData
     });
@@ -37,5 +36,10 @@ export default {
   },
   getGolfClubs: function() {
     return axios.get("/api/golfclub/all");
+  },
+  retrieveWeather: function(data) {
+    return axios.get("/api/weather/" + data.county, {
+      params: data
+    })
   }
 };

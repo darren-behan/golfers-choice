@@ -9,20 +9,16 @@ function GolfClub() {
 
   return (
     <>
-      {searchResults.length ? (
-        <ul className="golf-club-ul">
-          {searchResults.map(golfClub => (
-            <li key={ golfClub._id } className="golf-club-li">
-              <GolfClubCard 
-                golfClub={ golfClub }
-              />
-            </li>
-          ))}
-          <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
-        </ul>
-      ) : (
-        <h3>No Results to Display</h3>
-      )}
+      <ul className="golf-club-ul">
+        {searchResults.map(golfClub => (
+          <li key={ golfClub._id } className="golf-club-li">
+            <GolfClubCard 
+              golfClub={ golfClub }
+            />
+          </li>
+        ))}
+        <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
+      </ul>
     </>
   )
 }

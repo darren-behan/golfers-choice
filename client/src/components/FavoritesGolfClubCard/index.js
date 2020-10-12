@@ -24,7 +24,7 @@ function GolfClubCard(props) {
               <FontAwesomeIcon icon={ faStar } id={ props.golfClub._id } onClick={(e) => onClickStar(e) }/>
             </span>
   }
-  console.log(props)
+  
   return (
     <>
       {favorites.includes(props.golfClub._id) ?

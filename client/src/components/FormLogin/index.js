@@ -11,7 +11,7 @@ import Logo from "../../assets/img/golf-logo-header.jpg";
 import DataAreaContext from "../../utils/DataAreaContext";
 
 function LoginForm() {
-  const { validated, loggedInUserObject, setValidated, setIsAuthenticated, setLoggedInUserObject } = useContext(DataAreaContext);
+  const { loggedInUserObject, setIsAuthenticated, setLoggedInUserObject, loginErrResStatus, setLoginErrResStatus } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -21,20 +21,14 @@ function LoginForm() {
 
   const handleSignupFormSubmit = (event) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
 
-    setValidated(true);
     API.loginUser({
       email: loggedInUserObject.email,
       password: loggedInUserObject.password
     })
       .then((res) => setLoggedInUserObject(res.data))
       .then(() => setIsAuthenticated(true))
-      .catch(err => console.log(err));
+      .catch(err => setLoginErrResStatus(err.response.status));
   };
 
   return (
@@ -50,7 +44,7 @@ function LoginForm() {
             <h2 style={{color: '#697684', fontWeight: 400}}>Sign in</h2>
           </Col>
           <Col sm={12}>
-            <Form pt={20} noValidate validated={validated} onSubmit={handleSignupFormSubmit}>
+            <Form pt={20} onSubmit={handleSignupFormSubmit}>
               <Form.Group as={Row} controlId="formHorizontalEmail">
                 <Col sm={12}>
                   <Form.Control 
@@ -75,11 +69,21 @@ function LoginForm() {
                 </Col>
               </Form.Group>
 
+              {loginErrResStatus === 401 ? (
+                <div>Invalid username or password, please try again</div>
+              ) : (
+                <>
+                  { setLoginErrResStatus(false) }
+                </>
+              )}
+
               <Form.Group as={Row}>
                 <Col sm={{ span: 10 }}>
                   <Button variant="outline-dark" type="submit">Sign in</Button>
                 </Col>
               </Form.Group>
+
+
             </Form>
           </Col>
         </Col>

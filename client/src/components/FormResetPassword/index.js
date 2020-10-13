@@ -12,7 +12,7 @@ import DataAreaContext from "../../utils/DataAreaContext";
 
 function ResetPasswordForm() {
   let history = useHistory();
-  const { validated, loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject } = useContext(DataAreaContext);
+  const { loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -22,11 +22,6 @@ function ResetPasswordForm() {
 
   const handleResetPasswordFormSubmit = (event) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
 
     API.updateUser({
       id: loggedInUserObject.id,
@@ -55,7 +50,7 @@ function ResetPasswordForm() {
             <h2 style={{color: '#697684', fontWeight: 400}}>Reset Password</h2>
           </Col>
           <Col sm={12}>
-            <Form pt={20} noValidate validated={validated} onSubmit={handleResetPasswordFormSubmit}>
+            <Form pt={20} onSubmit={handleResetPasswordFormSubmit}>
               <Form.Group as={Row} controlId="formHorizontalPassword">
                 <Col sm={12}>
                   <Form.Control 

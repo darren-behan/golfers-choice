@@ -1,6 +1,5 @@
 // Dependencies
 // Requiring our models
-const { ObjectId } = require("mongoose");
 const db = require("../models");
 
 const getUserDtoFromModel = (model) => {
@@ -36,7 +35,8 @@ module.exports = {
             if (err) {
               res.send("Error: ", err);
             } else {
-              res.send(user);
+              const data = getUserDtoFromModel(user);
+              res.send(data);
             }
           })
         }

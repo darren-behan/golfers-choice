@@ -51,25 +51,23 @@ function ResetPasswordForm() {
           </Col>
           <Col sm={12}>
             <Form pt={20} onSubmit={handleResetPasswordFormSubmit}>
-              <Form.Group as={Row} controlId="formHorizontalPassword">
+              <Form.Group as={Row} id="formHorizontalPassword">
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange}
-                    type="oldPassword" 
+                    type="password" 
                     name="oldPassword"
-                    value={ updatePasswordUserObject.oldPassword }
                     placeholder="Enter your old password" 
                   />
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Row} controlId="formHorizontalPassword">
+              <Form.Group as={Row} id="formHorizontalPassword">
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange}
-                    type="newPassword"
+                    type="password"
                     name="newPassword"
-                    value={ updatePasswordUserObject.newPassword }
                     placeholder="Enter your new password" 
                   />
                 </Col>

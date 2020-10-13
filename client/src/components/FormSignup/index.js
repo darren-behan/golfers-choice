@@ -56,7 +56,7 @@ function SignUpForm() {
           </Col>
           <Col sm={12}>
             <Form pt={20} noValidate validated={validated} onSubmit={handleSignupFormSubmit}>
-              <Form.Group as={Row} controlId="validationCustom01">
+              <Form.Group as={Row} id="validationCustom01">
                 <Col sm={12}>
                   <Form.Control
                     onChange={handleInputChange}
@@ -69,7 +69,7 @@ function SignUpForm() {
                   <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Col>
               </Form.Group>
-              <Form.Group as={Row} controlId="validationCustom02">
+              <Form.Group as={Row} id="validationCustom02">
                 <Col sm={12}>
                   <Form.Control
                     onChange={handleInputChange}
@@ -83,7 +83,7 @@ function SignUpForm() {
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Row} controlId="formHorizontalEmail">
+              <Form.Group as={Row} id="formHorizontalEmail">
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange} 
@@ -94,7 +94,7 @@ function SignUpForm() {
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Row} controlId="validationCustomUsername">
+              <Form.Group as={Row} id="validationCustomUsername">
                 <InputGroup>
                   <Col sm={12}>
                     <Form.Control
@@ -113,7 +113,7 @@ function SignUpForm() {
                 </InputGroup>
               </Form.Group>
 
-              <Form.Group as={Row} controlId="formHorizontalPassword">
+              <Form.Group as={Row} id="formHorizontalPassword">
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange} 

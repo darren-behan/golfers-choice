@@ -45,7 +45,7 @@ function LoginForm() {
           </Col>
           <Col sm={12}>
             <Form pt={20} onSubmit={handleSignupFormSubmit}>
-              <Form.Group as={Row} controlId="formHorizontalEmail">
+              <Form.Group as={Row} id="formHorizontalEmail">
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange}
@@ -57,7 +57,7 @@ function LoginForm() {
                 </Col>
               </Form.Group>
 
-              <Form.Group as={Row} controlId="formHorizontalPassword">
+              <Form.Group as={Row} id="formHorizontalPassword">
                 <Col sm={12}>
                   <Form.Control 
                     onChange={handleInputChange}

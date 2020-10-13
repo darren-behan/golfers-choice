@@ -21,7 +21,7 @@ function HomeSearchForm() {
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setGolfClub({...golfClub, [name]: value})
+    setGolfClub({...golfClub, [name]: value.toLowerCase()})
   };
 
   const handleSignupFormSubmit = (event) => {

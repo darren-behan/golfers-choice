@@ -29,14 +29,17 @@ export default {
       params: userData
     });
   },
+  // Finds golf clubs in the county the user searched for
   findGolfClub: function(userData) {
     return axios.get("/api/golfclub", {
       params: userData
     });
   },
+  // Returns all golf clubs
   getGolfClubs: function() {
     return axios.get("/api/golfclub/all");
   },
+  // Returns the weather for the county the user searched for
   retrieveWeather: function(data) {
     return axios.get("/api/weather/" + data.county, {
       params: data

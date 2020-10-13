@@ -3,9 +3,10 @@ import './index.css';
 import DataAreaContext from "../../utils/DataAreaContext";
 import GolfClubModal from "../ModalGolfClub";
 import GolfClubCard from "../GolfClubCard";
+import JoinModal from "../ModalJoin";
 
 function GolfClub() {
-  const { searchResults, modalShow, setModalShow } = useContext(DataAreaContext);
+  const { searchResults, modalShow, setModalShow, joinModalShow, setJoinModalShow } = useContext(DataAreaContext);
 
   return (
     <>
@@ -18,6 +19,7 @@ function GolfClub() {
           </li>
         ))}
         <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
+        <JoinModal show={joinModalShow} onHide={() => setJoinModalShow(false)} />
       </ul>
     </>
   )

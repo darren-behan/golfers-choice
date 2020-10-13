@@ -37,8 +37,10 @@ function App() {
   const [modalDeleteAccountShow, setModalDeleteAccountShow] = useState(false);
   // This is used to store an object which has the golf club the user wants to favorite and a boolean value to show if that star should be green(false) or yellow(true)
   const [favorites, setFavorites] = useState([]);
-  // 
+  // This sets modalShow to true which pops up the modal to show the golf club details
   const [modalShow, setModalShow] = useState(false);
+  // This sets joinModalShow to true which pops out a modal to ask the user to sign in or join so they can favorite an account
+  const [joinModalShow, setJoinModalShow] = useState(false);
 
   // useEffect is listening on load of site
   // If isAuthenticated changes to true, the user is navigated to the home page 
@@ -65,19 +67,23 @@ function App() {
     const loggedInUserId = loggedInUserObject.id;
     const golfClubId = e.target.parentNode.id;
 
-    API.favoriteGolfClub({
-      golfClubId: golfClubId,
-      loggedInUserId: loggedInUserId
-    })
-    .then(res =>
-      setFavorites(res.data.favorites) 
-    )
-    .catch(err => console.log(err));
+    if(!isAuthenticated) {
+      setJoinModalShow(true);
+    } else {
+      API.favoriteGolfClub({
+        golfClubId: golfClubId,
+        loggedInUserId: loggedInUserId
+      })
+      .then(res =>
+        setFavorites(res.data.favorites) 
+      )
+      .catch(err => console.log(err));
+    }
   }
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow }}
     >
       <Wrapper>
         <Switch>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import "./index.css";
 import moment from 'moment';
 import DataAreaContext from "../../utils/DataAreaContext";
 import API from "../../utils/API";
@@ -54,7 +55,7 @@ function WidgetWeather() {
       <div></div>
       )
       : (
-      <div className="col-sm-12 rounded border" style={{ padding: 0, margin: "0 0 15px 0" }}>
+      <div className="col-sm-12 rounded border affix" data-spy="affix" style={{ padding: 0, margin: "0 0 15px 0" }}>
         <div className="list-group today-ul">
           <div className="list-group-item current title">
             <h2>{ items.name } - { currentDate }</h2>

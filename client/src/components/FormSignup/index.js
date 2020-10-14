@@ -34,7 +34,6 @@ function SignUpForm() {
       first_name: newUserObject.first_name,
       last_name: newUserObject.last_name,
       email: newUserObject.email,
-      username: newUserObject.username,
       password: newUserObject.password
     })
       .then((res) => setLoggedInUserObject(res.data))
@@ -89,24 +88,6 @@ function SignUpForm() {
                     type="email" 
                     placeholder="Email" />
                 </Col>
-              </Form.Group>
-
-              <Form.Group as={Row} id="validationCustomUsername">
-                <InputGroup>
-                  <Col sm={12}>
-                    <Form.Control
-                      onChange={handleInputChange}
-                      name="username"
-                      type="text"
-                      placeholder="Username"
-                      aria-describedby="inputGroupPrepend"
-                      required
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please enter a username.
-                    </Form.Control.Feedback>
-                  </Col>
-                </InputGroup>
               </Form.Group>
 
               <Form.Group as={Row} id="formHorizontalPassword">

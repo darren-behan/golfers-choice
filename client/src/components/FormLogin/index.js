@@ -68,7 +68,7 @@ function LoginForm() {
               </Form.Group>
 
               {loginErrResStatus === 401 ? (
-                <div>Invalid username or password, please try again</div>
+                <div>Invalid email or password, please try again</div>
               ) : (
                 <>
                   { setLoginErrResStatus(false) }

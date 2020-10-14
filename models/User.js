@@ -26,12 +26,6 @@ const UserSchema = new Schema({
     unique: true,
     required: "Enter your email"
   },
-  username: {
-    type: String,
-    trim: true,
-    unique: true,
-    required: "Enter your username"
-  },
   password: {
     type: String,
     trim: true,

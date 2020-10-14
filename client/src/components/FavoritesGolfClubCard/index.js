@@ -31,7 +31,7 @@ function GolfClubCard(props) {
       <Card>
         <Card.Body>
           <Card.Title>
-            { props.golfClub.name.toUpperCase() }
+            { props.golfClub.name }
             <FavoritedStar /> 
           </Card.Title>
           <Card.Text className="golf-club-li-description">

@@ -43,7 +43,7 @@ function App() {
   const [joinModalShow, setJoinModalShow] = useState(false);
   // This is used to store the status of the error when a USER attempts to login
   const [loginErrResStatus, setLoginErrResStatus] = useState(false);
-  // 
+  // This holds the last modified date returned from the golf club record
   const [localDate, setLocalDate] = useState("");
 
   // useEffect is listening on load of site
@@ -95,8 +95,14 @@ function App() {
           <Route exact path="/golfclub" component={GolfClub} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/reset-password" component={ResetPassword} />
+          {
+            isAuthenticated && (
+              <>
+                <Route exact path="/reset-password" component={ResetPassword} />
+                <Route exact path="/favorites" component={Favorites} />
+              </>
+            )
+          }
         </Switch>
       </Wrapper>
     </DataAreaContext.Provider>

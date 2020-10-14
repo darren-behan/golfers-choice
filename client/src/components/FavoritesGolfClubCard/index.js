@@ -43,7 +43,7 @@ function GolfClubCard(props) {
         </Card.Body>
       </Card>
       :
-      <div></div>
+      null
       }
     </>
   )

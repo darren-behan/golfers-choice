@@ -51,7 +51,6 @@ function LoginForm() {
                     onChange={handleInputChange}
                     type="email" 
                     name="email"
-                    value={ loggedInUserObject.email }
                     placeholder="Email" 
                   />
                 </Col>
@@ -63,7 +62,6 @@ function LoginForm() {
                     onChange={handleInputChange}
                     type="password"
                     name="password"
-                    value={ loggedInUserObject.password }
                     placeholder="Password" 
                   />
                 </Col>

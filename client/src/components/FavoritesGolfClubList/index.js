@@ -3,9 +3,10 @@ import './index.css';
 import DataAreaContext from "../../utils/DataAreaContext";
 import GolfClubModal from "../ModalGolfClub";
 import GolfClubCard from "../FavoritesGolfClubCard";
+import Col from 'react-bootstrap/Col';
 
 function GolfClub() {
-  const { favorites, modalShow, loggedInUserObject, golfClubs, setModalShow } = useContext(DataAreaContext);
+  const { favorites, modalShow, golfClubs, setModalShow } = useContext(DataAreaContext);
 
   return (
     <>
@@ -21,7 +22,9 @@ function GolfClub() {
           <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
         </ul>
       ) : (
-        <h3>No Results to Display</h3>
+        <Col>
+          <h3 style={{ textAlign: "center" }}>No Results to Display</h3>
+        </Col>
       )}
     </>
   )

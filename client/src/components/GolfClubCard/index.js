@@ -36,7 +36,7 @@ function GolfClubCard(props) {
       <Card>
         <Card.Body>
           <Card.Title>
-            { props.golfClub.name.toUpperCase() }
+            { props.golfClub.name }
             { isEmpty(favorites) ? 
               <UnfavoritedStar />
               :

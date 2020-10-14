@@ -43,6 +43,8 @@ function App() {
   const [joinModalShow, setJoinModalShow] = useState(false);
   // This is used to store the status of the error when a USER attempts to login
   const [loginErrResStatus, setLoginErrResStatus] = useState(false);
+  // 
+  const [localDate, setLocalDate] = useState("");
 
   // useEffect is listening on load of site
   // If isAuthenticated changes to true, the user is navigated to the home page 
@@ -85,7 +87,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, loginErrResStatus, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLoginErrResStatus }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, loginErrResStatus, localDate, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLoginErrResStatus, setLocalDate }}
     >
       <Wrapper>
         <Switch>

@@ -2,7 +2,7 @@
   background-color: #fbfbfb;
 }
 
-.card-title.capitalize {
+.card-title {
   text-transform: capitalize;
 }
 

@@ -46,6 +46,11 @@
   box-shadow: none!important;
 }
 
+.btn-outline-light:not(:disabled):not(.disabled):active {
+  background-color: #fff;
+  border: 1px solid #ced4da;
+}
+
 @media screen and (max-width: 500px) {
   .search-form-col {
     padding: 0 15px;

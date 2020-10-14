@@ -25,22 +25,25 @@ module.exports = {
   },
   update: function(req, res) {
     db.User
-      .findByIdAndUpdate(req.body.params.id, req.body.params, function (err, user) {
-        if (err) {
-          return next(err);
-        } else {
+      .findById({ _id: req.body.params.id })
+      .then(user => {
+        if (user.validPassword(req.body.params.oldPassword)) {
           user.password = req.body.params.newPassword;
           user.modified_at = new Date();
           user.save(function (err, user) {
             if (err) {
-              res.send("Error: ", err);
+              res.send(err);
             } else {
               const data = getUserDtoFromModel(user);
               res.send(data);
             }
           })
+        } else {
+          res.status(422).json("invalid password");
         }
       })
+      .catch(err => res.status(401).json(err));
+      
   },
   updateFavorites: function(req, res) {
     db.User

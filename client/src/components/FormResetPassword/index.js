@@ -12,7 +12,7 @@ import DataAreaContext from "../../utils/DataAreaContext";
 
 function ResetPasswordForm() {
   let history = useHistory();
-  const { loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject } = useContext(DataAreaContext);
+  const { loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject, resetPasswordErrResStatus, setResetPasswordErrResStatus } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -22,19 +22,22 @@ function ResetPasswordForm() {
 
   const handleResetPasswordFormSubmit = (event) => {
     event.preventDefault();
-
-    API.updateUser({
-      id: loggedInUserObject.id,
-      oldPassword: updatePasswordUserObject.oldPassword,
-      newPassword: updatePasswordUserObject.newPassword
-    })
-      .then((res) => {
-        if(res.status === 200) {
-          history.push("/home")
-        }
+    if (updatePasswordUserObject.oldPassword === updatePasswordUserObject.newPassword) {
+      alert("Old & new password can't match. Please ensure you're new password is different!");
+    } else {
+      API.updateUser({
+        id: loggedInUserObject.id,
+        oldPassword: updatePasswordUserObject.oldPassword,
+        newPassword: updatePasswordUserObject.newPassword
       })
-      .then(() => setIsAuthenticated(true))
-      .catch(err => console.log(err));
+        .then((res) => {
+          if(res.status === 200) {
+            history.push("/home")
+          }
+        })
+        .then(() => setIsAuthenticated(true))
+        .catch(err => setResetPasswordErrResStatus(err.response.status));
+    }
   };
 
   return (
@@ -72,6 +75,14 @@ function ResetPasswordForm() {
                   />
                 </Col>
               </Form.Group>
+
+              {resetPasswordErrResStatus === 422 ? (
+                <div>Your existing password is incorrect. For security reasons, this is required to match in order to proceed in updating your password. Please try again</div>
+              ) : (
+                <>
+                  { setResetPasswordErrResStatus(false) }
+                </>
+              )}
 
               <Form.Group as={Row} style={{ textAlign: "right" }}>
                 <Col sm={{ span: 12 }}>

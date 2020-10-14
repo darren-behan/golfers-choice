@@ -43,6 +43,8 @@ function App() {
   const [joinModalShow, setJoinModalShow] = useState(false);
   // This is used to store the status of the error when a USER attempts to login
   const [loginErrResStatus, setLoginErrResStatus] = useState(false);
+  // This is used to store the status of the error when a USER attempts to reset their password
+  const [resetPasswordErrResStatus, setResetPasswordErrResStatus] = useState(false);
   // This holds the last modified date returned from the golf club record
   const [localDate, setLocalDate] = useState("");
 
@@ -87,7 +89,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, loginErrResStatus, localDate, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLoginErrResStatus, setLocalDate }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, loginErrResStatus, localDate, resetPasswordErrResStatus, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLoginErrResStatus, setLocalDate, setResetPasswordErrResStatus }}
     >
       <Wrapper>
         <Switch>

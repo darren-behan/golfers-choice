@@ -29,7 +29,7 @@ function GolfClubModal(props) {
           <Row>
             <Col xs={12} style={{ borderBottom: "1px solid #dee2e6"}}>
               <div style={{ textAlign: "center", paddingBottom: "15px" }}>
-                <img src={ Image } alt="hero-img-golf-club" className="golf-club-image"/>
+                <img src={ golfClubModal.image } alt="hero-img-golf-club" className="golf-club-image"/>
               </div>
             </Col>
             <Col xs={12} style={{ borderBottom: "1px solid #dee2e6", padding: "16px 16px" }}>

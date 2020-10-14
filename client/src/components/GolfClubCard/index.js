@@ -34,7 +34,7 @@ function GolfClubCard(props) {
   return (
     <>
       <Card>
-        <Card.Img variant="top" src="https://pixabay.com/get/54e4dd434857aa14f6d1867dda353678153dd8e25358774f_640.jpg"/>
+        <Card.Img variant="top" src={ props.golfClub.image }/>
         <Card.Body>
           <Card.Title>
             { props.golfClub.name }

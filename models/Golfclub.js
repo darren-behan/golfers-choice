@@ -58,6 +58,9 @@ const GolfclubSchema = new Schema({
     type: Number,
     required: "Enter the golf club mens full membership charge"
   },
+  image: {
+    type: String
+  },
   modified_at: {
     type: Date,
     default: Date.now

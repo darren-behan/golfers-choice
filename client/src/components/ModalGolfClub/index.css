@@ -1,14 +1,14 @@
 @media screen and (max-width: 500px) {
   .golf-club-image {
     max-height: 400px;
-    max-width: 300px;
+    max-width: 325px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .golf-club-image {
     max-height: 400px;
-    max-width: 400px;
+    max-width: 465px;
   }
 }
 

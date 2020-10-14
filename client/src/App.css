@@ -17,3 +17,7 @@ a:hover {
   color: #ffffff;
   text-decoration: none;
 }
+
+.btn-outline-dark.focus, .btn-outline-dark:focus {
+  box-shadow: 0 0 0 0rem rgba(255,255,255, 0.8)!important;
+}

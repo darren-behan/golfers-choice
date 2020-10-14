@@ -13,7 +13,7 @@ function GolfClub() {
       {favorites.length || favorites === undefined ? (
         <ul className="golf-club-ul">
           {golfClubs.map(golfClub => 
-            <li key={ golfClub._id } className="golf-club-li">
+            <li key={ golfClub._id } className="golf-club-li golf-club-li-favorite">
               <GolfClubCard 
                 golfClub={ golfClub }
               />

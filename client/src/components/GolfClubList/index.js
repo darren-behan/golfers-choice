@@ -12,7 +12,7 @@ function GolfClub() {
     <>
       <ul className="golf-club-ul">
         {searchResults.map(golfClub => (
-          <li key={ golfClub._id } className="golf-club-li">
+          <li key={ golfClub._id } className="golf-club-li golf-club-li-main">
             <GolfClubCard 
               golfClub={ golfClub }
             />

@@ -1,6 +1,10 @@
+.border {
+  border: 0px!important;
+}
+
 @media screen and (min-width: 992px) {
   .affix {
-    top: 87.5px;
+    top: 87px;
     position: sticky;
   }
 }

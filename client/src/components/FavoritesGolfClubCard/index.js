@@ -29,6 +29,7 @@ function GolfClubCard(props) {
     <>
       {favorites.includes(props.golfClub._id) ?
       <Card>
+        <Card.Img variant="top" src="https://pixabay.com/get/54e4dd434857aa14f6d1867dda353678153dd8e25358774f_640.jpg"/>
         <Card.Body>
           <Card.Title>
             { props.golfClub.name }

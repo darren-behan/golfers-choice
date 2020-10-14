@@ -47,7 +47,7 @@ function GolfClubModal(props) {
               <br/>
               <strong>Summer Green Fee: </strong>€{ golfClubModal.green_fees_summer }
             </Col>
-            <Col xs={12} style={{ padding: "16px 16px 0px 16px" }}>
+            <Col xs={12} style={{ padding: "16px 16px 0px 16px" }} className="text-muted">
               <strong>Last updated: </strong>{ localDate.toLocaleString() }
             </Col>
           </Row>

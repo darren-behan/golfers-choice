@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import GolfClub from "./pages/GolfClub";
 import Favorites from "./pages/Favorites";
 import ResetPassword from "./pages/ResetPassword";
+import PageNotFound from "./pages/NotFound";
 import Wrapper from "./components/Wrapper";
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
           <Route exact path="/golfclub" component={GolfClub} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="*" component={PageNotFound} />
           {
             isAuthenticated && (
               <>

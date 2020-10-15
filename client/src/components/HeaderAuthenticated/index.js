@@ -23,7 +23,7 @@ function HeaderAuthenticated() {
 
   return(
     <>
-    <div className="welcome-div">Welcome, { loggedInUserObject.firstName } 👋</div>
+    <div className="welcome-div">Welcome, { loggedInUserObject.firstName }</div>
     <DropdownButton
       alignRight
       title={ <FontAwesomeIcon icon={ faUser }/> }

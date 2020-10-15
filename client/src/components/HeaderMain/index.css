@@ -4,8 +4,12 @@
   background-color: #fbfbfb;
 }
 
+.dropdown {
+  text-align: center;
+}
+
 .toggle-icon {
-  background-color: #046307;
+  background-color: #f0f2f5!important
 }
 
 .nav-link:hover {

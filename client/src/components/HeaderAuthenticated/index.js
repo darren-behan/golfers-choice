@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Nav from 'react-bootstrap/Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import DataAreaContext from "../../utils/DataAreaContext";
 
 function HeaderAuthenticated() {
-  const { setIsAuthenticated, setModalDeleteAccountShow, setLoggedInUserObject, setFavorites } = useContext(DataAreaContext);
+  const { setIsAuthenticated, setModalDeleteAccountShow, setLoggedInUserObject, setFavorites, loggedInUserObject } = useContext(DataAreaContext);
 
   const handleOnClickLogout = () => {
     setIsAuthenticated(false);
@@ -22,6 +23,7 @@ function HeaderAuthenticated() {
 
   return(
     <>
+    <div className="welcome-div">Welcome, { loggedInUserObject.firstName } 👋</div>
     <DropdownButton
       alignRight
       title={ <FontAwesomeIcon icon={ faUser }/> }

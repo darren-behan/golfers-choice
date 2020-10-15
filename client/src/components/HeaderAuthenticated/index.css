@@ -5,3 +5,17 @@
 .dropdown-item.active, .dropdown-item:active {
   background-color: #046307;
 }
+
+.welcome-div {
+  color: #fff;
+  font-weight: 900;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .welcome-div {
+    vertical-align: middle;
+    line-height: 37.5px;
+    padding: 0 5px;
+  }
+}

@@ -51,6 +51,10 @@
   border: 1px solid #ced4da;
 }
 
+.home-search-option {
+  text-transform: capitalize;
+}
+
 @media screen and (max-width: 500px) {
   .search-form-col {
     padding: 0 15px;

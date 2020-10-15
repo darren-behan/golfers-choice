@@ -16,7 +16,7 @@ import HomeHeader from "../HeaderHome";
 
 function HomeSearchForm() {
   let history = useHistory();
-  const { golfClub, setGolfClub, setSearchResults } = useContext(DataAreaContext);
+  const { golfClub, golfClubs, setGolfClub, setSearchResults } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -57,12 +57,19 @@ function HomeSearchForm() {
               <InputGroup className="mb-3">
                 <FormControl
                   onChange={ handleInputChange }
+                  as="select"
+                  size="lg"
                   name="county"
                   placeholder="Search by county"
                   aria-label="Search by county"
                   aria-describedby="basic-addon2"
-                  className="search-form-input"
-                />
+                  className="search-form-input home-search-option"
+                >
+                  <option selected>Search by county</option>
+                  {golfClubs.map(golfClub => 
+                    <option value={ golfClub.county }>{ golfClub.county }</option>
+                  )}
+                </FormControl>
                 <InputGroup.Append>
                   <Button variant="outline-light" className="search-form-button" onClick={ handleSignupFormSubmit }><FontAwesomeIcon icon={ faSearch }/> Search</Button>
                 </InputGroup.Append>

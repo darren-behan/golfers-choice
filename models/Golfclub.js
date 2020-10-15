@@ -64,9 +64,6 @@ const GolfclubSchema = new Schema({
   modified_at: {
     type: Date,
     default: Date.now
-  },
-  modified_by: {
-    type: String
   }
 });
 

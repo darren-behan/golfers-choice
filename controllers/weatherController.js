@@ -12,5 +12,6 @@ module.exports = {
         res.json(result.data);
       }
     )
+    .catch(err => res.json(err))
   }
 };

@@ -18,8 +18,8 @@ function Header() {
     <Navbar id="navbar" expand="md">
       <Navbar.Toggle className="toggle-icon mx-auto toggle-icon-filter" aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Form inline>
-          <FormControl type="text" placeholder="Search by golf club name" className="mr-sm-2" onChange={ handleInputChange }/>
+        <Form inline className="mx-auto">
+          <FormControl size="sm" type="text" placeholder="Find by golf club name" className="mr-sm-2" onChange={ handleInputChange }/>
         </Form>
       </Navbar.Collapse>
     </Navbar>

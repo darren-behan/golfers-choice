@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './index.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -9,10 +9,6 @@ import { isEmpty } from "lodash";
 
 function GolfClubCard(props) {
   const { setGolfClubModal, favorites, setModalShow, onClickStar } = useContext(DataAreaContext);
-
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites]);
 
   const viewGolfClubClick = (golfClubObject) => {
     setGolfClubModal(golfClubObject);

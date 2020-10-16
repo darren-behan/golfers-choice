@@ -59,7 +59,7 @@ function WidgetWeather() {
         <div className="list-group today-ul">
           <div className="list-group-item current title">
             <h2>{ items.name } - { currentDate }</h2>
-            <img src={ "https://openweathermap.org/img/w/" + items.currentIcon + ".png" } />
+            <img src={ "https://openweathermap.org/img/w/" + items.currentIcon + ".png" } alt="weather-icon"/>
           </div>
           <div className="list-group-item current">
             <span className="rounded description" style={{ backgroundColor: "orange", padding: "0px 5px", textTransform: "capitalize" }}>{ items.description }</span>

@@ -48,6 +48,8 @@ function App() {
   const [resetPasswordErrResStatus, setResetPasswordErrResStatus] = useState(false);
   // This holds the last modified date returned from the golf club record
   const [localDate, setLocalDate] = useState("");
+  // This stores the value the user inputs to filter the results
+  const [filterValue, setFilterValue] = useState("");
 
   // useEffect is listening on load of site
   // If isAuthenticated changes to true, the user is navigated to the home page 
@@ -86,11 +88,11 @@ function App() {
       )
       .catch(err => console.log(err));
     }
-  }
+  };
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, loginErrResStatus, localDate, resetPasswordErrResStatus, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLoginErrResStatus, setLocalDate, setResetPasswordErrResStatus }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, loginErrResStatus, localDate, resetPasswordErrResStatus, filterValue, loadGolfClubs, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLoginErrResStatus, setLocalDate, setResetPasswordErrResStatus, setFilterValue }}
     >
       <Wrapper>
         <Switch>
@@ -98,7 +100,6 @@ function App() {
           <Route exact path="/golfclub" component={GolfClub} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
-          <Route exact path="*" component={PageNotFound} />
           {
             isAuthenticated && (
               <>
@@ -107,6 +108,7 @@ function App() {
               </>
             )
           }
+          <Route exact path="*" component={PageNotFound} />
         </Switch>
       </Wrapper>
     </DataAreaContext.Provider>

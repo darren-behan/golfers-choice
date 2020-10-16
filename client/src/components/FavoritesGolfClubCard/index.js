@@ -1,18 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './index.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import DataAreaContext from "../../utils/DataAreaContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import {isEmpty} from "lodash";
 
 function GolfClubCard(props) {
-  const { setGolfClubModal, favorites, golfClubs, setModalShow, onClickStar } = useContext(DataAreaContext);
-
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites]);
+  const { setGolfClubModal, favorites, setModalShow, onClickStar } = useContext(DataAreaContext);
 
   const viewGolfClubClick = (golfClubObject) => {
     setGolfClubModal(golfClubObject);

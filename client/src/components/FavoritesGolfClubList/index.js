@@ -6,19 +6,26 @@ import GolfClubCard from "../FavoritesGolfClubCard";
 import Col from 'react-bootstrap/Col';
 
 function GolfClub() {
-  const { favorites, modalShow, golfClubs, setModalShow } = useContext(DataAreaContext);
+  const { favorites, modalShow, golfClubs, setModalShow, filterValue } = useContext(DataAreaContext);
 
   return (
     <>
       {favorites.length || favorites === undefined ? (
         <ul className="golf-club-ul">
           {golfClubs.map(golfClub => 
+            golfClub.name.includes(filterValue.toLowerCase())
+            ?  
+            (
             <li key={ golfClub._id } className="golf-club-li golf-club-li-favorite">
               <GolfClubCard 
                 golfClub={ golfClub }
               />
             </li>
-          )}
+            ) 
+            : 
+            null
+            )
+          }
           <GolfClubModal show={modalShow} onHide={() => setModalShow(false)} />
         </ul>
       ) : (

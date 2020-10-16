@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Nav from 'react-bootstrap/Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import DataAreaContext from "../../utils/DataAreaContext";

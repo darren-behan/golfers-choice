@@ -1,0 +1,7 @@
+.navbar-light .toggle-icon-filter .navbar-toggler-icon {
+  background-image: url("../../assets/rui-icons/filter.svg")!important;
+}
+
+.toggle-icon-filter {
+  margin-bottom: 8px;
+}

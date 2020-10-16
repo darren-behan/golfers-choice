@@ -66,9 +66,12 @@ function HomeSearchForm() {
                   className="search-form-input home-search-option"
                 >
                   <option selected>Search by county</option>
-                  {golfClubs.map(golfClub => 
-                    <option value={ golfClub.county }>{ golfClub.county }</option>
-                  )}
+                  <option value="carlow">carlow</option>
+                  <option value="dublin">dublin</option>
+                  <option value="kildare">kildare</option>
+                  <option value="loais">loais</option>
+                  <option value="waterford">waterford</option>
+                  <option value="wicklow">wicklow</option>
                 </FormControl>
                 <InputGroup.Append>
                   <Button variant="outline-light" className="search-form-button" onClick={ handleSignupFormSubmit }><FontAwesomeIcon icon={ faSearch }/> Search</Button>

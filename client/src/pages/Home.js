@@ -12,22 +12,23 @@ function Login() {
   const [imagePath, setImagePath] = useState('url(' + HeroImage + ')');
 
   useEffect(() => {
-    loadGolfClubs();
-  }, []);
+    // setTimeout(f1, 1000);
+  }, [golfClubs]);
 
   function f1() {
-    golfClubs.forEach(golfClub => {
-      let image = "";
-      image = golfClub.image;
-      setImages(`"url(${image})"`);
-    });
-    // for (let i = 0; i < golfClubs.length; i++) {
+    // golfClubs.forEach(golfClub => {
     //   let image = "";
-    //   image = golfClubs.image[i];
-    //   setImagePath(`"url(${image})"`);
-    // }
+    //   image = golfClub.image;
+    //   setImages(`"url(${image})"`);
+    // });
+    console.log(golfClubs);
+    for (let i = 0; i < golfClubs.length; i++) {
+      let image = "";
+      image = golfClubs[i].image;
+      setImagePath(`"url(${image})"`);
+    }
   }
-  // setTimeout(f1, 5000);
+  
 
   const RowStyles ={
     backgroundImage: imagePath,

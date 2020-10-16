@@ -58,8 +58,11 @@ function App() {
       history.push("/home");
       setFavorites( loggedInUserObject.favorites );
     };
-    loadGolfClubs();
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    loadGolfClubs();
+  }, []);
 
   // Loads all golf clubs and sets them to searchResults
   function loadGolfClubs() {

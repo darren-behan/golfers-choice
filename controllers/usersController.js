@@ -26,16 +26,14 @@ module.exports = {
       .findById({ _id: req.body.params.id })
       .then((user) => {
         if (user.validPassword(req.body.params.oldPassword)) {
-          const newUser = {
-            ...user,
-            password: req.body.params.newPassword,
-            modified_at: new Date(),
-          };
-          newUser.save((err, updatedUser) => {
+          /*eslint-disable */
+          user.password = req.body.params.newPassword;
+          user.modified_at = new Date();
+          user.save((err, user) => {
             if (err) {
               res.send(err);
             } else {
-              const data = getUserDtoFromModel(updatedUser);
+              const data = getUserDtoFromModel(user);
               res.send(data);
             }
           });
@@ -45,6 +43,7 @@ module.exports = {
       })
       .catch((err) => res.status(401).json(err));
   },
+  /* eslint-enable */
   updateFavorites(req, res) {
     db.User
       .findById({ _id: req.body.params.loggedInUserId })

@@ -42,8 +42,6 @@ function App() {
   const [modalShow, setModalShow] = useState(false);
   // This sets joinModalShow to true which pops out a modal to ask the user to sign in or join so they can favorite an account
   const [joinModalShow, setJoinModalShow] = useState(false);
-  // This is used to store the status of the error when a USER attempts to reset their password
-  const [resetPasswordErrResStatus, setResetPasswordErrResStatus] = useState(false);
   // This holds the last modified date returned from the golf club record
   const [localDate, setLocalDate] = useState("");
   // This stores the value the user inputs to filter the results
@@ -93,7 +91,7 @@ function App() {
 
   return (
     <DataAreaContext.Provider
-    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, localDate, resetPasswordErrResStatus, filterValue, loadGolfClubs, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLocalDate, setResetPasswordErrResStatus, setFilterValue }}
+    value={{ history, loggedInUserObject, newUserObject, validated, golfClub, isAuthenticated, searchResults, golfClubs, golfClubModal, updatePasswordUserObject, modalDeleteAccountShow, favorites, modalShow, joinModalShow, localDate, filterValue, loadGolfClubs, setValidated, setNewUserObject, setLoggedInUserObject, setIsAuthenticated, setGolfClub, setSearchResults, setGolfClubs, setGolfClubModal, setUpdatePasswordUserObject, setModalDeleteAccountShow, setFavorites, setModalShow, onClickStar, setJoinModalShow, setLocalDate, setFilterValue }}
     >
       <Wrapper>
         <Switch>

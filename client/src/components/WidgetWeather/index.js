@@ -19,7 +19,7 @@ function WidgetWeather() {
   // this useEffect will run once
   useEffect(() => {
     getWeather();
-  }, [getWeather, golfClub])
+  }, [golfClub])
 
   const getWeather = () => {
 

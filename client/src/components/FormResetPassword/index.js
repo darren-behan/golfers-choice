@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import './index.css';
 import API from "../../utils/API";
@@ -12,7 +12,10 @@ import DataAreaContext from "../../utils/DataAreaContext";
 
 function ResetPasswordForm() {
   let history = useHistory();
-  const { loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject, resetPasswordErrResStatus, setResetPasswordErrResStatus } = useContext(DataAreaContext);
+  const { loggedInUserObject, updatePasswordUserObject, setIsAuthenticated, setUpdatePasswordUserObject } = useContext(DataAreaContext);
+
+  // This is used to store the status of the error when a USER attempts to reset their password
+  const [resetPasswordErrResStatus, setResetPasswordErrResStatus] = useState(200);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -79,9 +82,7 @@ function ResetPasswordForm() {
               {resetPasswordErrResStatus === 422 ? (
                 <div>Your existing password is incorrect. For security reasons, this is required to match in order to proceed in updating your password. Please try again</div>
               ) : (
-                <>
-                  { setResetPasswordErrResStatus(false) }
-                </>
+                null
               )}
 
               <Form.Group as={Row} style={{ textAlign: "right" }}>

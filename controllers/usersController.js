@@ -3,7 +3,7 @@
 const db = require('../models');
 
 const getUserDtoFromModel = (model) => ({
-  id: model._id,
+  id: model._id, // eslint-disable-line
   firstName: model.first_name,
   lastName: model.last_name,
   email: model.email,
@@ -26,13 +26,16 @@ module.exports = {
       .findById({ _id: req.body.params.id })
       .then((user) => {
         if (user.validPassword(req.body.params.oldPassword)) {
-          user.password = req.body.params.newPassword;
-          user.modified_at = new Date();
-          user.save((err, user) => {
+          const newUser = {
+            ...user,
+            password: req.body.params.newPassword,
+            modified_at: new Date(),
+          };
+          newUser.save((err, updatedUser) => {
             if (err) {
               res.send(err);
             } else {
-              const data = getUserDtoFromModel(user);
+              const data = getUserDtoFromModel(updatedUser);
               res.send(data);
             }
           });
@@ -46,21 +49,27 @@ module.exports = {
     db.User
       .findById({ _id: req.body.params.loggedInUserId })
       .then((dbModel) => {
+        /*eslint-disable */
         dbModel.favorites.includes(req.body.params.golfClubId)
-          ? db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $pull: { favorites: req.body.params.golfClubId } }, { new: true })
-            .then((dbModel) => {
-              const data = getUserDtoFromModel(dbModel);
+          ? db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId },
+            { $pull: { favorites: req.body.params.golfClubId } },
+            { new: true })
+            .then((model) => {
+              const data = getUserDtoFromModel(model);
               res.json(data);
             })
             .catch((err) => res.status(422).json(err))
-          : db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId }, { $push: { favorites: req.body.params.golfClubId } }, { new: true })
-            .then((dbModel) => {
-              const data = getUserDtoFromModel(dbModel);
+          : db.User.findOneAndUpdate({ _id: req.body.params.loggedInUserId },
+            { $push: { favorites: req.body.params.golfClubId } },
+            { new: true })
+            .then((dbData) => {
+              const data = getUserDtoFromModel(dbData);
               res.json(data);
             })
             .catch((err) => res.status(422).json(err));
       });
   },
+  /* eslint-enable */
   remove(req, res) {
     db.User
       .findById({ _id: req.params.id })

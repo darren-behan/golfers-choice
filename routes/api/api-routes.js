@@ -5,7 +5,7 @@ const passport = require('../../config/passport');
 // Routes
 module.exports = function (app) {
   // GET route for getting all golf clubs
-  app.get('/api/golfclub', ({ body }, res) => {
+  app.get('/api/golfclub', (req, res) => {
     // Find all golf clubs
     db.Golfclub.find({})
       .then((dbGolfClub) => {

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular bcrypt module sometimes causes errors on Windows machines
+// Requiring bcrypt for password hashing. Using the bcryptjs version as the regular
+// bcrypt module sometimes causes errors on Windows machines
 const bcrypt = require('bcryptjs');
 
 const UserSchema = new Schema({
@@ -46,7 +47,9 @@ const UserSchema = new Schema({
   ],
 });
 
-// Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
+// Creating a custom method for our User model.
+// This will check if an unhashed password entered by the user can be
+// compared to the hashed password stored in our database
 UserSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };

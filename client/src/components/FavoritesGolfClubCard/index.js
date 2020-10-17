@@ -22,7 +22,6 @@ function GolfClubCard(props) {
   
   return (
     <>
-      {favorites.includes(props.golfClub._id) ?
       <Card>
         <Card.Img variant="top" src={ props.golfClub.image }/>
         <Card.Body>
@@ -38,9 +37,6 @@ function GolfClubCard(props) {
           </div>
         </Card.Body>
       </Card>
-      :
-      null
-      }
     </>
   )
 }

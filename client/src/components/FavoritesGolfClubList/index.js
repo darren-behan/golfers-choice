@@ -13,7 +13,7 @@ function GolfClub() {
       {favorites.length || favorites === undefined ? (
         <ul className="golf-club-ul">
           {golfClubs.map(golfClub => 
-            golfClub.name.includes(filterValue.toLowerCase())
+            golfClub.name.includes(filterValue.toLowerCase()) && favorites.includes(golfClub._id)
             ?  
             (
             <li key={ golfClub._id } className="golf-club-li golf-club-li-favorite">

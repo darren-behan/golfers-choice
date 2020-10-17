@@ -56,7 +56,7 @@ function App() {
       history.push("/home");
       setFavorites( loggedInUserObject.favorites );
     };
-  }, [isAuthenticated]);
+  }, [history, isAuthenticated, loggedInUserObject.favorites]);
 
   useEffect(() => {
     loadGolfClubs();

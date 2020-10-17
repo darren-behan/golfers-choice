@@ -1,6 +1,7 @@
 // For security, create a ".env" file in the project folder using the template in the existing ".env.sample" file,
 // inputting all the necessary parameters. ".gitignore" will ensure that these details are never pushed up to GitHub.
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
+
 dotenv.config();
 
 module.exports = {
@@ -21,7 +22,7 @@ module.exports = {
     dialect: process.env.MONGODB,
   },
   production: {
-    useEnvVariable: "MONGODB_URI",
-    dialect: "mongodb",
+    useEnvVariable: 'MONGODB_URI',
+    dialect: 'mongodb',
   },
 };

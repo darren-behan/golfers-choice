@@ -14,7 +14,7 @@ function GolfClubModal(props) {
   // If golfClubModal changes, setLocalDate executes 
   useEffect(() => {
     setLocalDate(new Date(golfClubModal.modified_at));
-  }, [golfClubModal]);
+  }, [golfClubModal, setLocalDate]);
 
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>

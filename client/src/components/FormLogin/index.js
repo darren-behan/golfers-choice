@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
 import './index.css';
 import API from "../../utils/API";
@@ -11,7 +11,10 @@ import Logo from "../../assets/img/golf-logo-header.jpg";
 import DataAreaContext from "../../utils/DataAreaContext";
 
 function LoginForm() {
-  const { loggedInUserObject, setIsAuthenticated, setLoggedInUserObject, loginErrResStatus, setLoginErrResStatus } = useContext(DataAreaContext);
+  const { loggedInUserObject, setIsAuthenticated, setLoggedInUserObject } = useContext(DataAreaContext);
+
+  // This is used to store the status of the error when a USER attempts to login
+  const [loginErrResStatus, setLoginErrResStatus] = useState(200);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -70,9 +73,7 @@ function LoginForm() {
               {loginErrResStatus === 401 ? (
                 <div>Invalid email or password, please try again</div>
               ) : (
-                <>
-                  { setLoginErrResStatus(false) }
-                </>
+                null
               )}
 
               <Form.Group as={Row}>

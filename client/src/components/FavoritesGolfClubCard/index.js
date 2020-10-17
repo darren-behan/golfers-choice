@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 function GolfClubCard(props) {
-  const { setGolfClubModal, favorites, setModalShow, onClickStar } = useContext(DataAreaContext);
+  const { setGolfClubModal, setModalShow, onClickStar } = useContext(DataAreaContext);
 
   const viewGolfClubClick = (golfClubObject) => {
     setGolfClubModal(golfClubObject);

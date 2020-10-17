@@ -7,8 +7,7 @@ import DeleteAccountModal from "../components/ModalDeleteAccount";
 import DataAreaContext from "../utils/DataAreaContext";
 
 function Login() { 
-  const { golfClubs, loadGolfClubs } = useContext(DataAreaContext);
-  const [images, setImages] = useState([]);
+  const { golfClubs } = useContext(DataAreaContext);
   const [imagePath, setImagePath] = useState('url(' + HeroImage + ')');
 
   useEffect(() => {

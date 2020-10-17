@@ -16,7 +16,7 @@ import HomeHeader from "../HeaderHome";
 
 function HomeSearchForm() {
   let history = useHistory();
-  const { golfClub, golfClubs, setGolfClub, setSearchResults } = useContext(DataAreaContext);
+  const { golfClub, setGolfClub, setSearchResults } = useContext(DataAreaContext);
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {

@@ -65,11 +65,11 @@ function HomeSearchForm() {
                   aria-describedby="basic-addon2"
                   className="search-form-input home-search-option"
                 >
-                  <option selected>Search by county</option>
+                  <option value="default" selected>Search by county</option>
                   <option value="carlow">carlow</option>
                   <option value="dublin">dublin</option>
                   <option value="kildare">kildare</option>
-                  <option value="loais">loais</option>
+                  <option value="laois">laois</option>
                   <option value="waterford">waterford</option>
                   <option value="wicklow">wicklow</option>
                 </FormControl>

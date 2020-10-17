@@ -1,36 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import HeroImage from '../assets/img/home-hero.jpg';
 import HomeSearchForm from "../components/FormHome";
 import DeleteAccountModal from "../components/ModalDeleteAccount";
-import DataAreaContext from "../utils/DataAreaContext";
 
-function Login() { 
-  const { golfClubs } = useContext(DataAreaContext);
-  const [imagePath, setImagePath] = useState('url(' + HeroImage + ')');
-
-  useEffect(() => {
-    // setTimeout(f1, 1000);
-  }, [golfClubs]);
-
-  function f1() {
-    // golfClubs.forEach(golfClub => {
-    //   let image = "";
-    //   image = golfClub.image;
-    //   setImages(`"url(${image})"`);
-    // });
-    console.log(golfClubs);
-    for (let i = 0; i < golfClubs.length; i++) {
-      let image = "";
-      image = golfClubs[i].image;
-      setImagePath(`"url(${image})"`);
-    }
-  }
-  
+function Login() {
 
   const RowStyles ={
-    backgroundImage: imagePath,
+    backgroundImage: 'url(' + HeroImage + ')',
     height: "100vh",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

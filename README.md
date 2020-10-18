@@ -19,11 +19,13 @@
 
 ## Installation
 
-⚙️ n/a
+⚙️ use Clone with HTTPS and run `git clone + the HTTPS link to install locally`. Run `npm i`. Run `npm start`.
 
 ## Usage
 
-🚨 Coming soon 🏌️‍♀️🏌️‍♂️
+🚨 View live demo <a href="https://golfers-choice.herokuapp.com">here</a> 🏌️‍♀️🏌️‍♂️
+
+![Preview](./client/src/assets/img/app.png "Preview of Golfers Choice App")
 
 ## License
 
